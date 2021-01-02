@@ -2,7 +2,7 @@
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {},
   "deprecated": false,
-  "description": "Node that outputs german holidays",
+  "description": "NodeRED node to get german holidays and own special dates",
   "keywords": [
     "node-red",
     "holidays",
@@ -41,7 +41,7 @@
     "1. Weihnachtsfeiertag",
     "2. Weihnachtsfeiertag",
     "schedule",
-    "setup"
+    "calendar"
   ],
   "license": "MIT",
   "name": "node-red-contrib-feiertage",
@@ -59,7 +59,7 @@
     "url": "https://github.com/MariusLang/node-red-contrib-feiertage/issues"
   },
   "homepage": "https://github.com/MariusLang/node-red-contrib-feiertage#readme",
-  "main": "germanholidays.js",
+  "main": "feiertage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

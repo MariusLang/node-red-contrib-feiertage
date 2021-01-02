@@ -4,7 +4,7 @@ The Node Red **feiertage** node is the ultimative node to get informations about
 
 ## Installation
 ```
-npm install node-red-contrib-feiertage
+npm i node-red-contrib-feiertage
 ```
 
 ## Getting Started

@@ -1,10 +1,10 @@
-# Node Red germanholidays
+# Node Red Feiertage
 
-The Node Red **germanholidays** node is the ultimative node to get informations about german holidays.
+The Node Red **feiertage** node is the ultimative node to get informations about german holidays.
 
 ## Installation
 ```
-npm install node-red-contrib-germanholidays
+npm install node-red-contrib-feiertage
 ```
 
 ## Getting Started

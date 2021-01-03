@@ -24,6 +24,13 @@ If your localisation is Germany chose **de_DE.UTF-8** as your local and **Europe
 
 ![pi_settings_2](https://github.com/MariusLang/node-red-contrib-feiertage/blob/master/img/pi_settings_2.PNG)
 
+After you have finished setup click **Finish**.
+To  make your changes valid reboot your pi.
+
+```
+sudo reboot
+```
+
 ## Node Description
 
 ### Input

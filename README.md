@@ -47,7 +47,7 @@ index | output
 2 | date (yyyy-mm-dd)
 
 ### Own Holidays
-You can chose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday.
+You can chose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday. Pay attention: The node does NOT validate your own dates. So if you set the 30 febrary or the 31 april as date you wont't get an error message.
 
 ![own_holiday_example](https://github.com/MariusLang/node-red-contrib-feiertage/blob/master/img/own_holiday_example.PNG)
 

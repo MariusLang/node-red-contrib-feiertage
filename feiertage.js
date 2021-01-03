@@ -260,7 +260,8 @@ module.exports = function(RED) {
         checkbox();
 
         this.on('input', function(msg) {
-            switch (msg.payload) {
+            var payload = msg.payload;
+            switch (payload) {
                 case "all":
                     sendAll(); // outputs all holidays
                     break;

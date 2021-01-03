@@ -46,6 +46,7 @@ index | output
 0 | english name
 1 | german name
 2 | date (yyyy-mm-dd)
+3 | german date (dd.mm.yyy)
 
 ### Own Holidays
 You can chose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday. Pay attention: The node does NOT validate your own dates. So if you set the 30 febrary or the 31 april as date you wont't get an error message.

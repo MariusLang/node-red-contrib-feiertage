@@ -1,6 +1,10 @@
 ![banner](https://github.com/MariusLang/node-red-contrib-feiertage/blob/feature/4/img/feiertage_banner.svg)
 # Node Red Feiertage
 
+[![NPM](https://img.shields.io/npm/v/node-red-contrib-feiertage)](https://www.npmjs.com/package/node-red-contrib-feiertage)
+[![NPM_downloads](https://img.shields.io/npm/dm/node-red-contrib-feiertage)](https://www.npmjs.com/package/node-red-contrib-feiertage)
+[![issues](https://img.shields.io/github/issues/mariuslang/node-red-contrib-feiertage)](https://github.com/MariusLang/node-red-contrib-feiertage/issues)
+
 The Node Red **Feiertage** node is the ultimative node to get informations about german holidays.
 
 ## Installation

@@ -1,3 +1,5 @@
+![banner](https://github.com/MariusLang/node-red-contrib-feiertage/blob/master/img/feiertage_banner.SVG)
+
 # Node Red Feiertage
 
 The Node Red **Feiertage** node is the ultimative node to get informations about german holidays.

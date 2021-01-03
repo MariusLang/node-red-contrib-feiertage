@@ -1,6 +1,6 @@
 # Node Red Feiertage
 
-The Node Red **feiertage** node is the ultimative node to get informations about german holidays.
+The Node Red **Feiertage** node is the ultimative node to get informations about german holidays.
 
 ## Installation
 ```

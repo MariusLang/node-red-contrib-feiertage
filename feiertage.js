@@ -5,35 +5,71 @@ module.exports = function(RED) {
         var node = this;
 
         var checkNewYear = config.neujahr; // checkbox New Year
+        var newYearName = config.neujahrName; // New Year Name
         var checkHolyThreeKings = config.heiligeDreiKoenige; // checkboy Holy Three Kings
+        var holyThreeKingsName = config.heiligeDreiKoenigeName; // Holy Three Kings Name
         var checkWeiberfastnacht = config.weiberfastnacht; // checkbox Weiberfastnacht
+        var weiberfastnachtName = config.weiberfastnachtName; // Weiberfastnacht Name
         var checkValentinstag = config.valentinstag; // checkbox Valentinstag
+        var valentinstagName = config.valentinstagName; // Valentinstag Name
         var checkRosenmontag = config.rosenmontag; // checkbox Rosenmontag
+        var rosenmontagName = config.rosenmontagName; // Rosenmontag Name
         var checkFastnachtsdienstag = config.fastnachtsdienstag; // checkbox Fastnachtsdienstag
+        var fastnachtsdienstagsName = config.fastnachtsdienstagName; // Fastnachtsdienstag Name
         var checkAschermittwoch = config.aschermittwoch; // checkbox Aschermittwoch
+        var aschermittwochName = config.aschermittwochName; // Aschermittwoch Name
         var checkGruendonnerstag = config.gruendonnerstag; // checkbox Gründonnerstag
+        var gruendonnerstagName = config.gruendonnerstagName; // Gründonnerstag Name
         var checkKarfreitag = config.karfreitag; // checkbox Karfreitag
+        var karfreitagName = config.karfreitagName; // Karfreitag Name
         var checkEasterSunday = config.easterSunday; // checkbox Easter Sunday
+        var easterSundayName = config.easterSundayName; // Easter Sunday Name
         var checkEasterMonday = config.easterMonday; // checkbox Easter Monday
+        var easterMondayName = config.easterMondayName; // Easter Monday Name
+        var checkFirstMay = config.firstMay; // checkbox 1. Mai
+        var firstMayName = config.firstMayName; // First May Name
         var checkChristiHimmelfahrt = config.christiHimmelfahrt; // checkbox Christihimmelfahrt
+        var christiHimmerlfahrtName = config.christiHimmerlfahrtName; // Christi Himmelfahrt Name
         var checkPfingstsonntag = config.pfingstsonntag; // checkbox Pfingstsonntag
+        var pfingstsonntagName = config.pfingstsonntagName; // Pfingstsonntag Name
         var checkPfingstmontag = config.pfingstmontag; // checkbox Pfingstmontag
+        var pfingstmontagName = config.pfingstmontagName; // Pfingstmontag Name
         var checkFronleichnam = config.fronleichnam; // checkbox Fronleichnam
+        var fronleichnamName = config.fronleichnamName; // Fronleichnam Name
         var checkMariaHimmelfahrt = config.mariaHimmelfahrt; // checkbox Maria Himmelfahrt
+        var mariaHimmelfahrtName = config.mariaHimmelfahrtName; // Maria Himmelfahrt Name
         var checkTagDerDeutschenEinheit = config.tagDerDeutschenEinheit; // checkbox Tag der Deutschen Einheit
+        var tagDerDeutschenEinheitName = config.tagDerDeutschenEinheitName; // Tag der Deutschen Einheit Name
+        var checkNationalfeiertagAT = config.nationalfeiertagAT; // checkbox Nationalfeiertag AT
+        var nationalfeiertagATName = config.nationalfeiertagATName; // Nationalfeiertag AT name
         var checkHalloween = config.halloween; // checkbox Halloween
+        var halloweenName = config.halloweenName; // Halloween Name
         var checkAllerheiligen = config.allerheiligen; // checkbox Allerheiligen
+        var allerheiligenName = config.allerheiligenName; // Allerheiligen Name
         var checkStMartin = config.stMartin; // checkbox St. Martin
+        var stMartinName = config.stMartinName; // St. Martin Name
         var checkBussUndBettag = config.bussUndBettag; // checkbox Buß und Bettag
+        var bussUndBettagName = config.bussUndBettagName; // Buß und Bettag Name
         var checkSanta = config.nikolaus; // checkbox Nikolaus
+        var santaName = config.nikolausName; // Nikolaus Name
+        var checkMariaeEmpfaengnis = config.mariaeEmpfaengnis; // check Mariä Empfängnis
+        var mariaeEmpfaengnisName = config.mariaeEmpfaengnisName; // Mariä Empfängnis Name
         var checkadvent1 = config.advent1; // checkbox 1. Advent
+        var advent1Name = config.advent1Name; // 1. Advent Name
         var checkAdvent2 = config.advent2; // checkbox 2. Advent
+        var advent2Name = config.advent2Name; // 2. Advent Name
         var checkAdvent3 = config.advent3; // checkbox 3. Advent
+        var advent3Name = config.advent3Name; // 3. Advent Name
         var checkAdvent4 = config.advent4; // checkbox 4. Advent
+        var advent4Name = config.advent4Name; // 4. Advent Name
         var checkChristmasEve = config.heiligabend; // checkbox Christmas Eve
+        var christmasEveName = config.heiligabendName; // Christmas Eve Name
         var checkFirstDayChristmas = config.weihnachten1; // checkbox First day of Chrsitmas
+        var firstDayChristmasName = config.weihnachten1Name; // First day of Christmas
         var checkSecondDayChristmas = config.weihnachten2; // checkbox Second day of Christmas
+        var secondDayChristmasName = config.weihnachten2Name; // Second day of Christmas
         var checkNewYearsEve = config.silvester; // checkbox New Years Eve
+        var newYearsEveName = config.silvesterName; // Silvester Name
 
         var checkOwnHoliday1 = config.ownHoliday1; // checkbox Own Holiday 1
         var dayOwnHoliday1 = config.ownHoliday1Day; // day Own Holiday 1
@@ -98,152 +134,167 @@ module.exports = function(RED) {
 
         var newYear = []; // day of New Year
         newYear[0] = "New Year";
-        newYear[1] = "Neujahr";
+        newYear[1] = newYearName;
         newYear[2] = getNeujahr(formatDateObj, currentYear);
         newYear[3] = getNeujahr(formatDE, currentYear);
         var holyThreeKings = []; // day of Holy Three Kings
         holyThreeKings[0] = "Holy Three Kings";
-        holyThreeKings[1] = "Heilige drei Könige";
+        holyThreeKings[1] = holyThreeKingsName;
         holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear);
         holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear);
         var weiberfastnacht = []; // day of Weiberfastnacht
         weiberfastnacht[0] = "Weiberfastnacht";
-        weiberfastnacht[1] = "Weiberfastnacht";
+        weiberfastnacht[1] = weiberfastnachtName;
         weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear);
         weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear);
         var valentinstag = []; // day of Valentinstag
         valentinstag[0] = "Valentinstag";
-        valentinstag[1] = "Valentinstag";
+        valentinstag[1] = valentinstagName;
         valentinstag[2] = getValentinstag(formatDateObj, currentYear);
         valentinstag[3] = getValentinstag(formatDE, currentYear);
         var rosenmontag = []; // day of Rosenmontag
         rosenmontag[0] = "Rosenmontag";
-        rosenmontag[1] = "Rosenmontag";
+        rosenmontag[1] = rosenmontagName;
         rosenmontag[2] = getRosenmontag(formatDateObj, currentYear);
         rosenmontag[3] = getRosenmontag(formatDE, currentYear);
         var fastnachtsdienstag = []; // day of Fastnachtsdienstag
         fastnachtsdienstag[0] = "Fastnachtdienstag";
-        fastnachtsdienstag[1] = "Fastnachtdienstag";
+        fastnachtsdienstag[1] = fastnachtsdienstagsName;
         fastnachtsdienstag[2] = getFastnachtsdienstag(formatDateObj, currentYear);
         fastnachtsdienstag[3] = getFastnachtsdienstag(formatDE, currentYear);
         var aschermittwoch = []; // day of Aschermittwoch
         aschermittwoch[0] = "Aschermittwoch";
-        aschermittwoch[1] = "Aschermittwoch";
+        aschermittwoch[1] = aschermittwochName;
         aschermittwoch[2] = getAschermittwoch(formatDateObj, currentYear);
         aschermittwoch[3] = getAschermittwoch(formatDE, currentYear);
         var gruendonnerstag = []; // day of Gründonnerstag
         gruendonnerstag[0] = "Gründonnerstag";
-        gruendonnerstag[1] = "Gründonnerstag";
+        gruendonnerstag[1] = gruendonnerstagName;
         gruendonnerstag[2] = getGruendonnerstag(formatDateObj, currentYear);
         gruendonnerstag[3] = getGruendonnerstag(formatDE, currentYear);
         var karfreitag = []; // day of Karfreitag
         karfreitag[0] = "Karfreitag";
-        karfreitag[1] = "Karfreitag";
+        karfreitag[1] = karfreitagName;
         karfreitag[2] = getKarfreitag(formatDateObj, currentYear);
         karfreitag[3] = getKarfreitag(formatDE, currentYear);
         var easterSunday = []; // day of Easter Sunday
         easterSunday[0] = "Easter Sunday";
-        easterSunday[1] = "Ostersonntag";
+        easterSunday[1] = easterSundayName;
         easterSunday[2] = getOstersonntag(formatDateObj, currentYear);
         easterSunday[3] = getOstersonntag(formatDE, currentYear);
         var easterMonday = []; // day of easter Sunday
         easterMonday[0] = "Easter Monday";
-        easterMonday[1] = "Ostermontag";
+        easterMonday[1] = easterMondayName;
         easterMonday[2] = getOstermontag(formatDateObj, currentYear);
         easterMonday[3] = getOstermontag(formatDE, currentYear);
+        var firstMay = []; // day of First May
+        firstMay[0] = "First May";
+        firstMay[1] = firstMayName;
+        firstMay[2] = getFirstMay(formatDateObj, currentYear);
+        firstMay[3] = getFirstMay(formatDE, currentYear);
         var christiHimmelfahrt = []; // day of Christi Himmelfahrt
         christiHimmelfahrt[0] = "Christi Himmelfahrt";
-        christiHimmelfahrt[1] = "Christi Himmelfahrt";
+        christiHimmelfahrt[1] = christiHimmerlfahrtName;
         christiHimmelfahrt[2] = getChristiHimmelfahrt(formatDateObj, currentYear);
         christiHimmelfahrt[3] = getChristiHimmelfahrt(formatDE, currentYear);
         var pfingstsonntag = []; // day of Pfingstsonntag
         pfingstsonntag[0] = "Pfingstsonntag";
-        pfingstsonntag[1] = "Pfingstsonntag";
+        pfingstsonntag[1] = pfingstsonntagName;
         pfingstsonntag[2] = getPfingstsonntag(formatDateObj, currentYear);
         pfingstsonntag[3] = getPfingstsonntag(formatDE, currentYear);
         var pfingstmontag = []; // day of Pfingstmontag
         pfingstmontag[0] = "Pfingstmontag";
-        pfingstmontag[1] = "Pfingstmontag";
+        pfingstmontag[1] = pfingstmontagName;
         pfingstmontag[2] = getPfingstmontag(formatDateObj, currentYear);
         pfingstmontag[3] = getPfingstmontag(formatDE, currentYear);
         var fronleichnam = []; // day of Fronleichnam
         fronleichnam[0] = "Fronleichnam";
-        fronleichnam[1] = "Fronleichnam";
+        fronleichnam[1] = fronleichnamName;
         fronleichnam[2] = getFronleichnam(formatDateObj, currentYear);
         fronleichnam[3] = getFronleichnam(formatDE, currentYear);
         var mariaHimmelfahrt = []; // day of Maria Himmelfahrt
         mariaHimmelfahrt[0] = "Maria Himmelfahrt";
-        mariaHimmelfahrt[1] = "Maria Himmelfahrt";
+        mariaHimmelfahrt[1] = mariaHimmelfahrtName;
         mariaHimmelfahrt[2] = getMariaHimmelfahrt(formatDateObj, currentYear);
         mariaHimmelfahrt[3] = getMariaHimmelfahrt(formatDE, currentYear);
         var tagDerDeutschenEinheit = []; // day of Tag der Deutschen Einheit
         tagDerDeutschenEinheit[0] = "Tag der Deutschen Einheit";
-        tagDerDeutschenEinheit[1] = "Tag der Deutschen Einheit";
+        tagDerDeutschenEinheit[1] = tagDerDeutschenEinheitName;
         tagDerDeutschenEinheit[2] = getTagDerDeutschenEinheit(formatDateObj, currentYear);
         tagDerDeutschenEinheit[3] = getTagDerDeutschenEinheit(formatDE, currentYear);
+        var nationalfeiertagAT = []; // day of Nationalfeiertag AT
+        nationalfeiertagAT[0] = "National holiday AT";
+        nationalfeiertagAT[1] = nationalfeiertagATName;
+        nationalfeiertagAT[2] = getNationalfeiertagAT(formatDateObj, currentYear);
+        nationalfeiertagAT[3] = getNationalfeiertagAT(formatDE, currentYear);
         var halloween = []; // day of Halloween
         halloween[0] = "Halloween";
-        halloween[1] = "Halloween";
+        halloween[1] = halloweenName;
         halloween[2] = getHalloween(formatDateObj, currentYear);
         halloween[3] = getHalloween(formatDE, currentYear);
         var allerheiligen = []; // day of Allerheiligen
         allerheiligen[0] = "Allerheiligen";
-        allerheiligen[1] = "Allerheiligen";
+        allerheiligen[1] = allerheiligenName;
         allerheiligen[2] = getAllerheiligen(formatDateObj, currentYear);
         allerheiligen[3] = getAllerheiligen(formatDE, currentYear);
         var stMartin = []; // day of St. Martin
         stMartin[0] = "St. Martin";
-        stMartin[1] = "St. Martin";
+        stMartin[1] = stMartinName;
         stMartin[2] = getStMartin(formatDateObj, currentYear);
         stMartin[3] = getStMartin(formatDE, currentYear);
         var bussUndBettag = []; // day of Buß und Bettag
         bussUndBettag[0] = "Buß und Bettag";
-        bussUndBettag[1] = "Buß und Bettag";
+        bussUndBettag[1] = bussUndBettagName;
         bussUndBettag[2] = getBussUndBettag(formatDateObj, currentYear);
         bussUndBettag[3] = getBussUndBettag(formatDE, currentYear);
         var santa = []; // day of Nikolaus
         santa[0] = "Santa Day";
-        santa[1] = "Nikolaus";
+        santa[1] = santaName;
         santa[2] = getNikolaus(formatDateObj, currentYear);
         santa[3] = getNikolaus(formatDE, currentYear);
+        var mariaeEmpfaengnis = []; // day of Mariä Empfängnis
+        mariaeEmpfaengnis[0] = "Mariä Empfängnis";
+        mariaeEmpfaengnis[1] = mariaeEmpfaengnisName;
+        mariaeEmpfaengnis[2] = getMariaeEmpfaengnis(formatDateObj, currentYear);
+        mariaeEmpfaengnis[3] = getMariaeEmpfaengnis(formatDE, currentYear);
         var advent1 = []; // day of first Advent
         advent1[0] = "1. Advent";
-        advent1[1] = "1. Advent";
+        advent1[1] = advent1Name;
         advent1[2] = getAdvent1(formatDateObj, currentYear);
         advent1[3] = getAdvent1(formatDE, currentYear);
         var advent2 = []; // day of second Advent
         advent2[0] = "2. Advent";
-        advent2[1] = "2. Advent";
+        advent2[1] = advent2Name;
         advent2[2] = getAdvent2(formatDateObj, currentYear);
         advent2[3] = getAdvent2(formatDE, currentYear);
         var advent3 = []; // day of third Advent
         advent3[0] = "3. Advent";
-        advent3[1] = "3. Advent";
+        advent3[1] = advent3Name;
         advent3[2] = getAdvent3(formatDateObj, currentYear);
         advent3[3] = getAdvent3(formatDE, currentYear);
         var advent4 = []; // day of fourth Advent
         advent4[0] = "4. Advent";
-        advent4[1] = "4. Advent";
+        advent4[1] = advent4Name;
         advent4[2] = getAdvent4(formatDateObj, 24, currentYear);
         advent4[3] = getAdvent4(formatDE, 24, currentYear);
         var christmasEve = []; // day of Christmas Eve
         christmasEve[0] = "Christmas Eve";
-        christmasEve[1] = "Heiligabend";
+        christmasEve[1] = christmasEveName;
         christmasEve[2] = getHeiligabend(formatDateObj, currentYear);
         christmasEve[3] = getHeiligabend(formatDE, currentYear);
         var firstDayChristmas = []; // day of First day of Christmas
         firstDayChristmas[0] = "First day of Christmas";
-        firstDayChristmas[1] = "1. Weihnachtsfeiertag";
+        firstDayChristmas[1] = firstDayChristmasName;
         firstDayChristmas[2] = getWeihnachtsfeiertag1(formatDateObj, currentYear);
         firstDayChristmas[3] = getWeihnachtsfeiertag1(formatDE, currentYear);
         var secondDayChristmas = []; // day of Second day of Christmas
         secondDayChristmas[0] = "Second day of Christmas";
-        secondDayChristmas[1] = "2. Weihnachtsfeiertag";
+        secondDayChristmas[1] = secondDayChristmasName;
         secondDayChristmas[2] = getWeihnachtsfeiertag2(formatDateObj, currentYear);
         secondDayChristmas[3] = getWeihnachtsfeiertag2(formatDE, currentYear);
         var newYearsEve = []; // day of New Years Eve
         newYearsEve[0] = "New Years Eve";
-        newYearsEve[1] = "Silvester";
+        newYearsEve[1] = newYearsEveName;
         newYearsEve[2] = getSilvester(formatDateObj, currentYear);
         newYearsEve[3] = getSilvester(formatDE, currentYear);
 
@@ -451,6 +502,14 @@ module.exports = function(RED) {
             }
         }
 
+        function getFirstMay(format, year) {
+            if (format == formatDE) {
+                return "1.5." + year;
+            } else {
+                return year + "-5-1";
+            }
+        }
+
         function getChristiHimmelfahrt(format, year) {
             var refereceDate = new Date(getOstersonntag(formatDateObj, year));
             refereceDate.setDate(refereceDate.getDate() + 39); // Christi Himmelfahrt = eastersunday + 39
@@ -511,6 +570,14 @@ module.exports = function(RED) {
             }
         }
 
+        function getNationalfeiertagAT(format, year) {
+            if (format == formatDE) {
+                return "26.10." + year;
+            } else {
+                return year + "-10-26";
+            }
+        }
+
         function getHalloween(format, year) {
             if (format == formatDE) {
                 return "31.10." + year;
@@ -551,6 +618,14 @@ module.exports = function(RED) {
                 return "6.12." + year;
             } else {
                 return year + "-12-6";
+            }
+        }
+
+        function getMariaeEmpfaengnis(format, year) {
+            if (format == formatDE) {
+                return "8.12." + year;
+            } else {
+                return year + "-12-8";
             }
         }
 
@@ -816,6 +891,10 @@ module.exports = function(RED) {
                 easterMonday[2] = getOstermontag(formatDateObj, currentYear + 1);
                 easterMonday[3] = getOstermontag(formatDE, currentYear + 1);
             }
+            if ((new Date(firstMay[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                firstMay[2] = getFirstMay(formatDateObj, currentYear + 1);
+                firstMay[3] = getFirstMay(formatDE, currentYear + 1);
+            }
             if ((new Date(christiHimmelfahrt[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 christiHimmelfahrt[2] = getChristiHimmelfahrt(formatDateObj, currentYear + 1);
                 christiHimmelfahrt[3] = getChristiHimmelfahrt(formatDE, currentYear + 1);
@@ -840,6 +919,10 @@ module.exports = function(RED) {
                 tagDerDeutschenEinheit[2] = getTagDerDeutschenEinheit(formatDateObj, currentYear + 1);
                 tagDerDeutschenEinheit[3] = getTagDerDeutschenEinheit(formatDE, currentYear + 1);
             }
+            if ((new Date(nationalfeiertagAT[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                nationalfeiertagAT[2] = getNationalfeiertagAT(formatDateObj, currentYear + 1);
+                nationalfeiertagAT[3] = getNationalfeiertagAT(formatDE, currentYear + 1);
+            }
             if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear + 1);
                 weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear + 1);
@@ -859,6 +942,14 @@ module.exports = function(RED) {
             if ((new Date(bussUndBettag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 bussUndBettag[2] = getBussUndBettag(formatDateObj, currentYear + 1);
                 bussUndBettag[3] = getBussUndBettag(formatDE, currentYear + 1);
+            }
+            if ((new Date(santa[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                santa[2] = getNikolaus(formatDateObj, currentYear + 1);
+                santa[3] = getNikolaus(formatDE, currentYear + 1);
+            }
+            if ((new Date(mariaeEmpfaengnis[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                mariaeEmpfaengnis[2] = getMariaeEmpfaengnis(formatDateObj, currentYear + 1);
+                mariaeEmpfaengnis[3] = getMariaeEmpfaengnis(formatDE, currentYear + 1);
             }
             if ((new Date(advent1[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 advent1[2] = getAdvent1(formatDateObj, currentYear + 1);
@@ -895,10 +986,6 @@ module.exports = function(RED) {
             if ((new Date(ownHoliday1[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 ownHoliday1[2] = getOwnHoliday1(formatDateObj, currentYear + 1);
                 ownHoliday1[3] = getOwnHoliday1(formatDE, currentYear + 1);
-            }
-            if ((new Date(santa[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
-                santa[2] = getNikolaus(formatDateObj, currentYear + 1);
-                santa[3] = getNikolaus(formatDE, currentYear + 1);
             }
             if ((new Date(ownHoliday2[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 ownHoliday2[2] = getOwnHoliday2(formatDateObj, currentYear + 1);
@@ -1063,6 +1150,16 @@ module.exports = function(RED) {
                     holiday.splice(index); // remove item at index
                 }
             }
+            // check First May is activated
+            if (checkFirstMay) {
+                holiday.push(firstMay); // add First May to holiday array
+            }
+            else {
+                var index = holiday.indexOf(firstMay); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
             // check Christi Himmelfahrt is activated
             if (checkChristiHimmelfahrt) {
                 holiday.push(christiHimmelfahrt); // add Christi Himmelfahrt to holiday array
@@ -1123,6 +1220,16 @@ module.exports = function(RED) {
                     holiday.splice(index); // remove item at index
                 }
             }
+            // check Nationalfeiertag AT is activated
+            if (checkNationalfeiertagAT) {
+                holiday.push(nationalfeiertagAT); // add Nationalfeiertag AT to holiday array
+            }
+            else {
+                var index = holiday.indexOf(nationalfeiertagAT); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
             // check Halloween is activated
             if (checkHalloween) {
                 holiday.push(halloween); // add Halloween to holiday array
@@ -1169,6 +1276,16 @@ module.exports = function(RED) {
             }
             else {
                 var index = holiday.indexOf(santa); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Mariä Empfängnis is activated
+            if (checkMariaeEmpfaengnis) {
+                holiday.push(mariaeEmpfaengnis); // add Mariö Empfängnis to holiday array
+            }
+            else {
+                var index = holiday.indexOf(mariaeEmpfaengnis); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }

@@ -1,19 +1,13 @@
 <script type="text/html" data-template-name="feiertage">
     <div class="form-row">
-        <label for="node-input-local"><i class="fa fa-map-marker"></i> Localisation</label>
-        <select style="width: 130px;" id="node-input-local">
-            <option value="DE">Deutschland</option>
-            <option value="AT">Österreich</option>
-            <option value="CH">Schweiz</option>
-        </select>
-    </div>
-
-    <hr>
-
-    <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-neujahr" placeholder="Neujahr"></span>
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-neujahrName" placeholder="Neujahr">
         <label for="node-input-neujahrName"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
+    </div>
+    <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-berchtoldstag" placeholder="Berchtoldstag"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-berchtoldstagName" placeholder="Berchtoldstag">
+        <label for="node-input-berchtoldstagName"><i class="fa fa-map-marker"></i> CH</label>
     </div>
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-heiligeDreiKoenige" placeholder="Heilige Drei Könige"></span>
@@ -46,6 +40,11 @@
         <label for="node-input-aschermittwochName"><i class="fa fa-map-marker"></i> DE, AT</label>
     </div>
     <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-stJosef" placeholder="St. Josef"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-stJosefName" placeholder="St. Josef">
+        <label for="node-input-stJosefName"><i class="fa fa-map-marker"></i> AT</label>
+    </div>
+    <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-gruendonnerstag" placeholder="Gründonnerstag"></span>
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-gruendonnerstagName" placeholder="Gründonnerstag">
         <label for="node-input-gruendonnerstagName"><i class="fa fa-map-marker"></i> DE, AT</label>
@@ -71,9 +70,14 @@
         <label for="node-input-firstMayName"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
     </div>
     <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-stFlorian" placeholder="St. Florian"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-stFlorianName" placeholder="St. Florian">
+        <label for="node-input-stFlorianName"><i class="fa fa-map-marker"></i> AT</label>
+    </div>
+    <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-christiHimmelfahrt" placeholder="Christi Himmelfahrt"></span>
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-christiHimmelfahrtName" placeholder="Christi Himmelfahrt">
-        <label for="node-input-christiHimmelfahrtName"><i class="fa fa-map-marker"></i> DE, AT</label>
+        <label for="node-input-christiHimmelfahrtName"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
     </div>
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-pfingstsonntag" placeholder="Pfingstsonntag"></span>
@@ -96,9 +100,19 @@
         <label for="node-input-mariaHimmelfahrtName"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
     </div>
     <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-stRupert" placeholder="St. Rupert"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-stRupertName" placeholder="St. Rupert">
+        <label for="node-input-stRupertName"><i class="fa fa-map-marker"></i> AT</label>
+    </div>
+    <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-tagDerDeutschenEinheit" placeholder="Tag der Deutschen Einheit"></span>
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-tagDerDeutschenEinheitName" placeholder="Tag Der Deutschen Einheit">
         <label for="node-input-tagDerDeutschenEinheitName"><i class="fa fa-map-marker"></i> DE</label>
+    </div>
+    <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-tagDerVolksabstimmung" placeholder="Tag der Volksabstimmung"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-tagDerVolksabstimmungName" placeholder="Tag der Volksabstimmung">
+        <label for="node-input-tagDerVolksabstimmungName"><i class="fa fa-map-marker"></i> AT</label>
     </div>
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-nationalfeiertagAT" placeholder="Nationalfeiertag AT"></span>
@@ -118,7 +132,12 @@
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-stMartin" placeholder="St. Martin"></span>
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-stMartinName" placeholder="St. Martin">
-        <label for="node-input-stMartinName"><i class="fa fa-map-marker"></i> DE, CH</label>
+        <label for="node-input-stMartinName"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
+    </div>
+    <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-stLeopold" placeholder="St. Leopold"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-stLeopoldName" placeholder="St. Leopold">
+        <label for="node-input-stLeopoldName"><i class="fa fa-map-marker"></i> AT</label>
     </div>
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-bussUndBettag" placeholder="Buß und Bettag"></span>
@@ -175,6 +194,9 @@
         <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-silvesterName" placeholder="Silvester">
         <label for="node-input-silvester"><i class="fa fa-map-marker"></i> DE, AT, CH</label>
     </div>
+
+    <hr>
+
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-ownHoliday1" placeholder="Own Holiday1"></span>
         <i class="fa fa-calendar"></i> <select style="width: 50px;" id="node-input-ownHoliday1Day">
@@ -686,6 +708,8 @@
         <input style="width: 200px;" type="text" id="node-input-ownHoliday10Name" placeholder="Holiday 10">
     </div>
 
+    <hr>
+
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -731,6 +755,8 @@
             local: {value: "DE", required: true},
             neujahr: {value: true},
             neujahrName: {value: "Neujahr", required: true},
+            berchtoldstag: {value: true},
+            berchtoldstagName: {value: "Berchtoldstag"},
             heiligeDreiKoenige: {value: true},
             heiligeDreiKoenigeName: {value: "Heilige drei Könige", required: true},
             weiberfastnacht: {value: true},
@@ -743,6 +769,8 @@
             fastnachtsdienstagName: {value: "Fastnachtdienstag", required: true},
             aschermittwoch: {value: true},
             aschermittwochName: {value: "Aschermittwoch", required: true},
+            stJosef: {value: true},
+            stJosefName: {value: "St. Josef", required: true},
             gruendonnerstag: {value: true},
             gruendonnerstagName: {value: "Gründonnerstag", required: true},
             karfreitag: {value: true},
@@ -753,6 +781,8 @@
             easterMondayName: {value: "Ostermontag", required: true},
             firstMay: {value: true},
             firstMayName: {value: "1. Mai", required: true},
+            stFlorian: {value: true},
+            stFlorianName: {value: "St. Florian", required: true},
             christiHimmelfahrt: {value: true},
             christiHimmelfahrtName: {value: "Christi Himmelfahrt", required: true},
             pfingstsonntag: {value: true},
@@ -763,8 +793,12 @@
             fronleichnamName: {value: "Fronleichnam", required: true},
             mariaHimmelfahrt: {value: true},
             mariaHimmelfahrtName: {value: "Maria Himmelfahrt", required: true},
+            stRupert: {value: true},
+            stRupertName: {value: "St. Rupert", required: true},
             tagDerDeutschenEinheit: {value: true},
             tagDerDeutschenEinheitName: {value: "Tag der Deutschen Einheit", required: true},
+            tagDerVolksabstimmung: {value: true},
+            tagDerVolksabstimmungName: {value: "Tag der Volksabstimmung", required: true},
             nationalfeiertagAT: {value: true},
             nationalfeiertagATName: {value: "Nationalfeiertag", required: true},
             halloween: {value: true},
@@ -773,6 +807,8 @@
             allerheiligenName: {value: "Allerheiligen", required: true},
             stMartin: {value: true},
             stMartinName: {value: "St. Martin", required: true},
+            stLeopold: {value: true},
+            stLeopoldName: {value: "St. Leopold", required: true},
             bussUndBettag: {value: true},
             bussUndBettagName: {value: "Buß und Bettag", required: true},
             nikolaus: {value: true},

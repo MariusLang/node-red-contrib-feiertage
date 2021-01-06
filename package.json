@@ -2,7 +2,7 @@
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {},
   "deprecated": false,
-  "description": "NodeRED node to get german holidays and own special dates",
+  "description": "NodeRED node to get german, austrian and swiss holidays and own special dates",
   "keywords": [
     "node-red",
     "holidays",
@@ -32,12 +32,9 @@
     "Allerheiligen",
     "St. Martin",
     "Buß und Bettag",
-    "1. Advent",
-    "2. Advent",
-    "Nikolaus",
-    "3. Advent",
-    "4. Advent",
+    "Advent",
     "Heiligabend",
+    "Weihnachten",
     "1. Weihnachtsfeiertag",
     "2. Weihnachtsfeiertag",
     "schedule",
@@ -54,7 +51,7 @@
     "type": "git",
     "url": "git+https://github.com/MariusLang/node-red-contrib-feiertage.git"
   },
-  "version": "0.8.2",
+  "version": "0.8.3",
   "bugs": {
     "url": "https://github.com/MariusLang/node-red-contrib-feiertage/issues"
   },

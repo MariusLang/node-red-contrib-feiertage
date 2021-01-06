@@ -7,7 +7,7 @@
 
 [![NPM](https://nodei.co/npm/node-red-contrib-feiertage.png?compact=true)](https://nodei.co/npm/node-red-contrib-feiertage/)
 
-The Node Red **Feiertage** node is the ultimative node to get informations about german holidays.
+The Node Red **Feiertage** node is the ultimative node to get informations about german and austrian holidays.
 
 ## Installation
 ```

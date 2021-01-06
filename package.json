@@ -2,7 +2,7 @@
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {},
   "deprecated": false,
-  "description": "NodeRED node to get german, austrian and swiss holidays and own special dates",
+  "description": "NodeRED node to get german, austrian, swiss holidays and own special dates",
   "keywords": [
     "node-red",
     "holidays",

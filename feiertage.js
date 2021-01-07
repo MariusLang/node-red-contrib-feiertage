@@ -968,6 +968,11 @@ module.exports = function(RED) {
                 holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear + 1);
                 holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear + 1);
             }
+            
+            if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear + 1);
+                weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear + 1);
+            }
             if ((new Date(valentinstag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 valentinstag[2] = getValentinstag(formatDateObj, currentYear + 1);
                 valentinstag[3] = getValentinstag(formatDE, currentYear + 1);
@@ -1051,10 +1056,6 @@ module.exports = function(RED) {
             if ((new Date(nationalfeiertagAT[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 nationalfeiertagAT[2] = getNationalfeiertagAT(formatDateObj, currentYear + 1);
                 nationalfeiertagAT[3] = getNationalfeiertagAT(formatDE, currentYear + 1);
-            }
-            if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
-                weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear + 1);
-                weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear + 1);
             }
             if ((new Date(halloween[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 halloween[2] = getHalloween(formatDateObj, currentYear + 1);

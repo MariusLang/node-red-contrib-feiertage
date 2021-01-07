@@ -2,16 +2,21 @@
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {},
   "deprecated": false,
-  "description": "NodeRED node to get german, austrian and swiss holidays and own special dates",
+  "description": "NodeRED node to get german, austrian, swiss holidays and own special dates",
   "keywords": [
     "node-red",
     "holidays",
     "feiertage",
     "publicholiday",
     "german",
+    "austria",
+    "switzerland",
     "germanholidays",
     "date",
     "New Year",
+    "Berchtoldstag",
+    "Bundesfeiertag",
+    "Nationalfeiertag",
     "Heilige Drei Könige",
     "Weiberfastnacht",
     "Valentinstag",
@@ -51,7 +56,7 @@
     "type": "git",
     "url": "git+https://github.com/MariusLang/node-red-contrib-feiertage.git"
   },
-  "version": "0.8.3",
+  "version": "0.9.2",
   "bugs": {
     "url": "https://github.com/MariusLang/node-red-contrib-feiertage/issues"
   },

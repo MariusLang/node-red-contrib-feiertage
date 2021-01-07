@@ -5,35 +5,85 @@ module.exports = function(RED) {
         var node = this;
 
         var checkNewYear = config.neujahr; // checkbox New Year
+        var newYearName = config.neujahrName; // New Year Name
+        var checkBerchtoldstag = config.berchtoldstag; // checkbox Berchtoldstag
+        var berchtoldstagName = config.berchtoldstagName; // Berchtoldstag Name
         var checkHolyThreeKings = config.heiligeDreiKoenige; // checkboy Holy Three Kings
+        var holyThreeKingsName = config.heiligeDreiKoenigeName; // Holy Three Kings Name
         var checkWeiberfastnacht = config.weiberfastnacht; // checkbox Weiberfastnacht
+        var weiberfastnachtName = config.weiberfastnachtName; // Weiberfastnacht Name
         var checkValentinstag = config.valentinstag; // checkbox Valentinstag
+        var valentinstagName = config.valentinstagName; // Valentinstag Name
         var checkRosenmontag = config.rosenmontag; // checkbox Rosenmontag
+        var rosenmontagName = config.rosenmontagName; // Rosenmontag Name
         var checkFastnachtsdienstag = config.fastnachtsdienstag; // checkbox Fastnachtsdienstag
+        var fastnachtsdienstagsName = config.fastnachtsdienstagName; // Fastnachtsdienstag Name
         var checkAschermittwoch = config.aschermittwoch; // checkbox Aschermittwoch
+        var aschermittwochName = config.aschermittwochName; // Aschermittwoch Name
+        var checkStJosef = config.stJosef; // checkbox St. Josef
+        var stJosefName = config.stJosefName; // St. Josef Name
         var checkGruendonnerstag = config.gruendonnerstag; // checkbox Gründonnerstag
+        var gruendonnerstagName = config.gruendonnerstagName; // Gründonnerstag Name
         var checkKarfreitag = config.karfreitag; // checkbox Karfreitag
+        var karfreitagName = config.karfreitagName; // Karfreitag Name
         var checkEasterSunday = config.easterSunday; // checkbox Easter Sunday
+        var easterSundayName = config.easterSundayName; // Easter Sunday Name
         var checkEasterMonday = config.easterMonday; // checkbox Easter Monday
+        var easterMondayName = config.easterMondayName; // Easter Monday Name
+        var checkFirstMay = config.firstMay; // checkbox 1. Mai
+        var firstMayName = config.firstMayName; // First May Name
+        var checkStFlorian = config.stFlorian; // checkbox St. Florian
+        var stFlorianName = config.stFlorianName; // St. Florian Name
         var checkChristiHimmelfahrt = config.christiHimmelfahrt; // checkbox Christihimmelfahrt
+        var christiHimmerlfahrtName = config.christiHimmelfahrtName; // Christi Himmelfahrt Name
         var checkPfingstsonntag = config.pfingstsonntag; // checkbox Pfingstsonntag
+        var pfingstsonntagName = config.pfingstsonntagName; // Pfingstsonntag Name
         var checkPfingstmontag = config.pfingstmontag; // checkbox Pfingstmontag
+        var pfingstmontagName = config.pfingstmontagName; // Pfingstmontag Name
         var checkFronleichnam = config.fronleichnam; // checkbox Fronleichnam
+        var fronleichnamName = config.fronleichnamName; // Fronleichnam Name
+        var checkBundesfeierCH = config.bundesfeierCH; // checkbox Bundesfeier
+        var bundesfeierCHName = config.bundesfeierCHName; // Bundesfeier CH Name
         var checkMariaHimmelfahrt = config.mariaHimmelfahrt; // checkbox Maria Himmelfahrt
+        var mariaHimmelfahrtName = config.mariaHimmelfahrtName; // Maria Himmelfahrt Name
+        var checkStRupert = config.stRupert; // checkbox St. Rupert
+        var stRupertName = config.stRupertName; // St. Rupert Name
         var checkTagDerDeutschenEinheit = config.tagDerDeutschenEinheit; // checkbox Tag der Deutschen Einheit
+        var tagDerDeutschenEinheitName = config.tagDerDeutschenEinheitName; // Tag der Deutschen Einheit Name
+        var checkTagDerVolksabstimmung = config.tagDerVolksabstimmung; // checkbox Tag der Volksabstimmung
+        var tagDerVolksabstimmungName = config.tagDerVolksabstimmungName; // Tag der Volksabstimmung Name
+        var checkNationalfeiertagAT = config.nationalfeiertagAT; // checkbox Nationalfeiertag AT
+        var nationalfeiertagATName = config.nationalfeiertagATName; // Nationalfeiertag AT name
         var checkHalloween = config.halloween; // checkbox Halloween
+        var halloweenName = config.halloweenName; // Halloween Name
         var checkAllerheiligen = config.allerheiligen; // checkbox Allerheiligen
+        var allerheiligenName = config.allerheiligenName; // Allerheiligen Name
         var checkStMartin = config.stMartin; // checkbox St. Martin
+        var stMartinName = config.stMartinName; // St. Martin Name
+        var checkStLeopold = config.stLeopold; // checkbox St. Leopold
+        var stLeopoldName = config.stLeopoldName; // St. Leopold Name
         var checkBussUndBettag = config.bussUndBettag; // checkbox Buß und Bettag
+        var bussUndBettagName = config.bussUndBettagName; // Buß und Bettag Name
         var checkSanta = config.nikolaus; // checkbox Nikolaus
+        var santaName = config.nikolausName; // Nikolaus Name
+        var checkMariaeEmpfaengnis = config.mariaeEmpfaengnis; // check Mariä Empfängnis
+        var mariaeEmpfaengnisName = config.mariaeEmpfaengnisName; // Mariä Empfängnis Name
         var checkadvent1 = config.advent1; // checkbox 1. Advent
+        var advent1Name = config.advent1Name; // 1. Advent Name
         var checkAdvent2 = config.advent2; // checkbox 2. Advent
+        var advent2Name = config.advent2Name; // 2. Advent Name
         var checkAdvent3 = config.advent3; // checkbox 3. Advent
+        var advent3Name = config.advent3Name; // 3. Advent Name
         var checkAdvent4 = config.advent4; // checkbox 4. Advent
+        var advent4Name = config.advent4Name; // 4. Advent Name
         var checkChristmasEve = config.heiligabend; // checkbox Christmas Eve
+        var christmasEveName = config.heiligabendName; // Christmas Eve Name
         var checkFirstDayChristmas = config.weihnachten1; // checkbox First day of Chrsitmas
+        var firstDayChristmasName = config.weihnachten1Name; // First day of Christmas
         var checkSecondDayChristmas = config.weihnachten2; // checkbox Second day of Christmas
+        var secondDayChristmasName = config.weihnachten2Name; // Second day of Christmas
         var checkNewYearsEve = config.silvester; // checkbox New Years Eve
+        var newYearsEveName = config.silvesterName; // Silvester Name
 
         var checkOwnHoliday1 = config.ownHoliday1; // checkbox Own Holiday 1
         var dayOwnHoliday1 = config.ownHoliday1Day; // day Own Holiday 1
@@ -97,153 +147,203 @@ module.exports = function(RED) {
         const formatDE = "DE";
 
         var newYear = []; // day of New Year
-        newYear[0] = "New Year";
-        newYear[1] = "Neujahr";
+        newYear[0] = "New Year"; // id
+        newYear[1] = newYearName; // name
         newYear[2] = getNeujahr(formatDateObj, currentYear);
         newYear[3] = getNeujahr(formatDE, currentYear);
+        var berchtoldstag = []; // day of Berchtoldstag
+        berchtoldstag[0] = "Berchtoldstag"; // id
+        berchtoldstag[1] = berchtoldstagName; // name
+        berchtoldstag[2] = getBerchtoldstag(formatDateObj, currentYear);
+        berchtoldstag[3] = getBerchtoldstag(formatDE, currentYear);
         var holyThreeKings = []; // day of Holy Three Kings
-        holyThreeKings[0] = "Holy Three Kings";
-        holyThreeKings[1] = "Heilige drei Könige";
+        holyThreeKings[0] = "Holy Three Kings"; // id
+        holyThreeKings[1] = holyThreeKingsName; // name
         holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear);
         holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear);
         var weiberfastnacht = []; // day of Weiberfastnacht
-        weiberfastnacht[0] = "Weiberfastnacht";
-        weiberfastnacht[1] = "Weiberfastnacht";
+        weiberfastnacht[0] = "Weiberfastnacht"; // id
+        weiberfastnacht[1] = weiberfastnachtName; // name
         weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear);
         weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear);
         var valentinstag = []; // day of Valentinstag
-        valentinstag[0] = "Valentinstag";
-        valentinstag[1] = "Valentinstag";
+        valentinstag[0] = "Valentinstag"; // id
+        valentinstag[1] = valentinstagName; // name
         valentinstag[2] = getValentinstag(formatDateObj, currentYear);
         valentinstag[3] = getValentinstag(formatDE, currentYear);
         var rosenmontag = []; // day of Rosenmontag
-        rosenmontag[0] = "Rosenmontag";
-        rosenmontag[1] = "Rosenmontag";
+        rosenmontag[0] = "Rosenmontag"; // id
+        rosenmontag[1] = rosenmontagName; // name
         rosenmontag[2] = getRosenmontag(formatDateObj, currentYear);
         rosenmontag[3] = getRosenmontag(formatDE, currentYear);
         var fastnachtsdienstag = []; // day of Fastnachtsdienstag
-        fastnachtsdienstag[0] = "Fastnachtdienstag";
-        fastnachtsdienstag[1] = "Fastnachtdienstag";
+        fastnachtsdienstag[0] = "Fastnachtdienstag"; // id
+        fastnachtsdienstag[1] = fastnachtsdienstagsName; // name
         fastnachtsdienstag[2] = getFastnachtsdienstag(formatDateObj, currentYear);
         fastnachtsdienstag[3] = getFastnachtsdienstag(formatDE, currentYear);
         var aschermittwoch = []; // day of Aschermittwoch
-        aschermittwoch[0] = "Aschermittwoch";
-        aschermittwoch[1] = "Aschermittwoch";
+        aschermittwoch[0] = "Aschermittwoch"; // id
+        aschermittwoch[1] = aschermittwochName; // name
         aschermittwoch[2] = getAschermittwoch(formatDateObj, currentYear);
         aschermittwoch[3] = getAschermittwoch(formatDE, currentYear);
+        var stJosef = []; // day of St. Josef
+        stJosef[0] = "St. Josef"; // id
+        stJosef[1] = stJosefName; // name
+        stJosef[2] = getStJosef(formatDateObj, currentYear);
+        stJosef[3] = getStJosef(formatDE, currentYear);
         var gruendonnerstag = []; // day of Gründonnerstag
-        gruendonnerstag[0] = "Gründonnerstag";
-        gruendonnerstag[1] = "Gründonnerstag";
+        gruendonnerstag[0] = "Gründonnerstag"; // id
+        gruendonnerstag[1] = gruendonnerstagName; // name
         gruendonnerstag[2] = getGruendonnerstag(formatDateObj, currentYear);
         gruendonnerstag[3] = getGruendonnerstag(formatDE, currentYear);
         var karfreitag = []; // day of Karfreitag
-        karfreitag[0] = "Karfreitag";
-        karfreitag[1] = "Karfreitag";
+        karfreitag[0] = "Karfreitag"; // id
+        karfreitag[1] = karfreitagName; // name
         karfreitag[2] = getKarfreitag(formatDateObj, currentYear);
         karfreitag[3] = getKarfreitag(formatDE, currentYear);
         var easterSunday = []; // day of Easter Sunday
-        easterSunday[0] = "Easter Sunday";
-        easterSunday[1] = "Ostersonntag";
+        easterSunday[0] = "Easter Sunday"; // id
+        easterSunday[1] = easterSundayName; // name
         easterSunday[2] = getOstersonntag(formatDateObj, currentYear);
         easterSunday[3] = getOstersonntag(formatDE, currentYear);
         var easterMonday = []; // day of easter Sunday
-        easterMonday[0] = "Easter Monday";
-        easterMonday[1] = "Ostermontag";
+        easterMonday[0] = "Easter Monday"; // id
+        easterMonday[1] = easterMondayName; // name
         easterMonday[2] = getOstermontag(formatDateObj, currentYear);
         easterMonday[3] = getOstermontag(formatDE, currentYear);
+        var firstMay = []; // day of First May
+        firstMay[0] = "First May"; // id
+        firstMay[1] = firstMayName; // name
+        firstMay[2] = getFirstMay(formatDateObj, currentYear);
+        firstMay[3] = getFirstMay(formatDE, currentYear);
+        var stFlorian = []; // day of St. Florian
+        stFlorian[0] = "St. Florian"; // id
+        stFlorian[1] = stFlorianName; // name
+        stFlorian[2] = getStFlorian(formatDateObj, currentYear);
+        stFlorian[3] = getStFlorian(formatDE, currentYear);
         var christiHimmelfahrt = []; // day of Christi Himmelfahrt
-        christiHimmelfahrt[0] = "Christi Himmelfahrt";
-        christiHimmelfahrt[1] = "Christi Himmelfahrt";
+        christiHimmelfahrt[0] = "Christi Himmelfahrt"; // id
+        christiHimmelfahrt[1] = christiHimmerlfahrtName; // name
         christiHimmelfahrt[2] = getChristiHimmelfahrt(formatDateObj, currentYear);
         christiHimmelfahrt[3] = getChristiHimmelfahrt(formatDE, currentYear);
         var pfingstsonntag = []; // day of Pfingstsonntag
-        pfingstsonntag[0] = "Pfingstsonntag";
-        pfingstsonntag[1] = "Pfingstsonntag";
+        pfingstsonntag[0] = "Pfingstsonntag"; // id
+        pfingstsonntag[1] = pfingstsonntagName; // name
         pfingstsonntag[2] = getPfingstsonntag(formatDateObj, currentYear);
         pfingstsonntag[3] = getPfingstsonntag(formatDE, currentYear);
         var pfingstmontag = []; // day of Pfingstmontag
-        pfingstmontag[0] = "Pfingstmontag";
-        pfingstmontag[1] = "Pfingstmontag";
+        pfingstmontag[0] = "Pfingstmontag"; // id
+        pfingstmontag[1] = pfingstmontagName; // name
         pfingstmontag[2] = getPfingstmontag(formatDateObj, currentYear);
         pfingstmontag[3] = getPfingstmontag(formatDE, currentYear);
         var fronleichnam = []; // day of Fronleichnam
-        fronleichnam[0] = "Fronleichnam";
-        fronleichnam[1] = "Fronleichnam";
+        fronleichnam[0] = "Fronleichnam"; // id
+        fronleichnam[1] = fronleichnamName; // name
         fronleichnam[2] = getFronleichnam(formatDateObj, currentYear);
         fronleichnam[3] = getFronleichnam(formatDE, currentYear);
+        var bundesfeierCH = []; // day of Bundesfeier CH
+        bundesfeierCH[0] = "Bundesfeier CH"; // id
+        bundesfeierCH[1] = bundesfeierCHName; // name
+        bundesfeierCH[2] = getBundesfeierCH(formatDateObj, currentYear);
+        bundesfeierCH[3] = getBundesfeierCH(formatDE, currentYear);
         var mariaHimmelfahrt = []; // day of Maria Himmelfahrt
-        mariaHimmelfahrt[0] = "Maria Himmelfahrt";
-        mariaHimmelfahrt[1] = "Maria Himmelfahrt";
+        mariaHimmelfahrt[0] = "Maria Himmelfahrt"; // id
+        mariaHimmelfahrt[1] = mariaHimmelfahrtName; // name
         mariaHimmelfahrt[2] = getMariaHimmelfahrt(formatDateObj, currentYear);
         mariaHimmelfahrt[3] = getMariaHimmelfahrt(formatDE, currentYear);
+        var stRupert = []; // day of St. Rupert
+        stRupert[0] = "St. Rupert"; // id
+        stRupert[1] = stRupertName; // name
+        stRupert[2] = getStRupert(formatDateObj, currentYear);
+        stRupert[3] = getStRupert(formatDE, currentYear);
         var tagDerDeutschenEinheit = []; // day of Tag der Deutschen Einheit
-        tagDerDeutschenEinheit[0] = "Tag der Deutschen Einheit";
-        tagDerDeutschenEinheit[1] = "Tag der Deutschen Einheit";
+        tagDerDeutschenEinheit[0] = "Tag der Deutschen Einheit"; // id
+        tagDerDeutschenEinheit[1] = tagDerDeutschenEinheitName; // name
         tagDerDeutschenEinheit[2] = getTagDerDeutschenEinheit(formatDateObj, currentYear);
         tagDerDeutschenEinheit[3] = getTagDerDeutschenEinheit(formatDE, currentYear);
+        var tagDerVolksabstimmung = []; // day of Tag der Volksabstimmung
+        tagDerVolksabstimmung[0] = "Tag der Volksabstimmung AT"; // id
+        tagDerVolksabstimmung[1] = tagDerVolksabstimmungName; // name
+        tagDerVolksabstimmung[2] = getTagDerVolksabstimmung(formatDateObj, currentYear);
+        tagDerVolksabstimmung[3] = getTagDerVolksabstimmung(formatDE, currentYear);
+        var nationalfeiertagAT = []; // day of Nationalfeiertag AT
+        nationalfeiertagAT[0] = "Nationalfeiertag AT"; // id
+        nationalfeiertagAT[1] = nationalfeiertagATName; // name
+        nationalfeiertagAT[2] = getNationalfeiertagAT(formatDateObj, currentYear);
+        nationalfeiertagAT[3] = getNationalfeiertagAT(formatDE, currentYear);
         var halloween = []; // day of Halloween
-        halloween[0] = "Halloween";
-        halloween[1] = "Halloween";
+        halloween[0] = "Halloween"; // id
+        halloween[1] = halloweenName; // name
         halloween[2] = getHalloween(formatDateObj, currentYear);
         halloween[3] = getHalloween(formatDE, currentYear);
         var allerheiligen = []; // day of Allerheiligen
-        allerheiligen[0] = "Allerheiligen";
-        allerheiligen[1] = "Allerheiligen";
+        allerheiligen[0] = "Allerheiligen"; // id
+        allerheiligen[1] = allerheiligenName; // name
         allerheiligen[2] = getAllerheiligen(formatDateObj, currentYear);
         allerheiligen[3] = getAllerheiligen(formatDE, currentYear);
         var stMartin = []; // day of St. Martin
-        stMartin[0] = "St. Martin";
-        stMartin[1] = "St. Martin";
+        stMartin[0] = "St. Martin"; // id
+        stMartin[1] = stMartinName; // name
         stMartin[2] = getStMartin(formatDateObj, currentYear);
         stMartin[3] = getStMartin(formatDE, currentYear);
+        var stLeopold = []; // day of St. Leopold
+        stLeopold[0] = "St. Leopold"; // id
+        stLeopold[1] = stLeopoldName; // name
+        stLeopold[2] = getStLeopold(formatDateObj, currentYear);
+        stLeopold[3] = getStLeopold(formatDE, currentYear);
         var bussUndBettag = []; // day of Buß und Bettag
-        bussUndBettag[0] = "Buß und Bettag";
-        bussUndBettag[1] = "Buß und Bettag";
+        bussUndBettag[0] = "Buß und Bettag"; // id
+        bussUndBettag[1] = bussUndBettagName; // name
         bussUndBettag[2] = getBussUndBettag(formatDateObj, currentYear);
         bussUndBettag[3] = getBussUndBettag(formatDE, currentYear);
         var santa = []; // day of Nikolaus
-        santa[0] = "Santa Day";
-        santa[1] = "Nikolaus";
+        santa[0] = "Santa Day"; // id
+        santa[1] = santaName; // name
         santa[2] = getNikolaus(formatDateObj, currentYear);
         santa[3] = getNikolaus(formatDE, currentYear);
+        var mariaeEmpfaengnis = []; // day of Mariä Empfängnis
+        mariaeEmpfaengnis[0] = "Mariä Empfängnis"; // id
+        mariaeEmpfaengnis[1] = mariaeEmpfaengnisName; // name
+        mariaeEmpfaengnis[2] = getMariaeEmpfaengnis(formatDateObj, currentYear);
+        mariaeEmpfaengnis[3] = getMariaeEmpfaengnis(formatDE, currentYear);
         var advent1 = []; // day of first Advent
-        advent1[0] = "1. Advent";
-        advent1[1] = "1. Advent";
+        advent1[0] = "1. Advent"; // id
+        advent1[1] = advent1Name; // name
         advent1[2] = getAdvent1(formatDateObj, currentYear);
         advent1[3] = getAdvent1(formatDE, currentYear);
         var advent2 = []; // day of second Advent
-        advent2[0] = "2. Advent";
-        advent2[1] = "2. Advent";
+        advent2[0] = "2. Advent"; // id
+        advent2[1] = advent2Name; // name
         advent2[2] = getAdvent2(formatDateObj, currentYear);
         advent2[3] = getAdvent2(formatDE, currentYear);
         var advent3 = []; // day of third Advent
-        advent3[0] = "3. Advent";
-        advent3[1] = "3. Advent";
+        advent3[0] = "3. Advent"; // id
+        advent3[1] = advent3Name; // name
         advent3[2] = getAdvent3(formatDateObj, currentYear);
         advent3[3] = getAdvent3(formatDE, currentYear);
         var advent4 = []; // day of fourth Advent
-        advent4[0] = "4. Advent";
-        advent4[1] = "4. Advent";
+        advent4[0] = "4. Advent"; // id
+        advent4[1] = advent4Name; // name
         advent4[2] = getAdvent4(formatDateObj, 24, currentYear);
         advent4[3] = getAdvent4(formatDE, 24, currentYear);
         var christmasEve = []; // day of Christmas Eve
-        christmasEve[0] = "Christmas Eve";
-        christmasEve[1] = "Heiligabend";
+        christmasEve[0] = "Christmas Eve"; // id
+        christmasEve[1] = christmasEveName; // name
         christmasEve[2] = getHeiligabend(formatDateObj, currentYear);
         christmasEve[3] = getHeiligabend(formatDE, currentYear);
         var firstDayChristmas = []; // day of First day of Christmas
-        firstDayChristmas[0] = "First day of Christmas";
-        firstDayChristmas[1] = "1. Weihnachtsfeiertag";
+        firstDayChristmas[0] = "First day of Christmas"; // id
+        firstDayChristmas[1] = firstDayChristmasName; // name
         firstDayChristmas[2] = getWeihnachtsfeiertag1(formatDateObj, currentYear);
         firstDayChristmas[3] = getWeihnachtsfeiertag1(formatDE, currentYear);
         var secondDayChristmas = []; // day of Second day of Christmas
-        secondDayChristmas[0] = "Second day of Christmas";
-        secondDayChristmas[1] = "2. Weihnachtsfeiertag";
+        secondDayChristmas[0] = "Second day of Christmas"; // id
+        secondDayChristmas[1] = secondDayChristmasName; // name
         secondDayChristmas[2] = getWeihnachtsfeiertag2(formatDateObj, currentYear);
         secondDayChristmas[3] = getWeihnachtsfeiertag2(formatDE, currentYear);
         var newYearsEve = []; // day of New Years Eve
-        newYearsEve[0] = "New Years Eve";
-        newYearsEve[1] = "Silvester";
+        newYearsEve[0] = "New Years Eve"; // id
+        newYearsEve[1] = newYearsEveName; // name
         newYearsEve[2] = getSilvester(formatDateObj, currentYear);
         newYearsEve[3] = getSilvester(formatDE, currentYear);
 
@@ -337,6 +437,14 @@ module.exports = function(RED) {
             }
         }
 
+        function getBerchtoldstag(format, year) {
+            if (format == formatDE) {
+                return "1.2." + year;
+            } else {
+                return year + "-1-2";
+            }
+        }
+
         function getHeiligeDreiKoenige(format, year) {
             if (format == formatDE) {
                 return "6.1." + year;
@@ -397,6 +505,14 @@ module.exports = function(RED) {
             }
         }
 
+        function getStJosef(format, year) {
+            if (format == formatDE) {
+                return "19.3." + year;
+            } else {
+                return year + "-3-19";
+            }
+        }
+
         function getGruendonnerstag(format, year) {
             var refereceDate = new Date(getOstersonntag(formatDateObj, year));
             refereceDate.setDate(refereceDate.getDate() - 3); // Gründonnerstag = eastersunday - 3
@@ -448,6 +564,22 @@ module.exports = function(RED) {
                 return refereceDate.getDate() + "." + (refereceDate.getMonth() + 1) + "." + year;
             } else {
                 return year + "-" + (refereceDate.getMonth() + 1) + "-" + refereceDate.getDate();
+            }
+        }
+
+        function getFirstMay(format, year) {
+            if (format == formatDE) {
+                return "1.5." + year;
+            } else {
+                return year + "-5-1";
+            }
+        }
+
+        function getStFlorian(format, year) {
+            if (format == formatDE) {
+                return "4.5." + year;
+            } else {
+                return year + "-5-4";
             }
         }
 
@@ -503,11 +635,43 @@ module.exports = function(RED) {
             }
         }
 
+        function getBundesfeierCH(format, year) {
+            if (format == formatDE) {
+                return "1.8." + year;
+            } else {
+                return year + "-8-1";
+            }
+        }
+
+        function getStRupert(format, year) {
+            if (format == formatDE) {
+                return "24.9." + year;
+            } else {
+                return year + "-9-24";
+            }
+        }
+
         function getTagDerDeutschenEinheit(format, year) {
             if (format == formatDE) {
                 return "3.10." + year;
             } else {
                 return year + "-10-3";
+            }
+        }
+
+        function getTagDerVolksabstimmung(format, year) {
+            if (format == formatDE) {
+                return "10.10." + year;
+            } else {
+                return year + "-10-10";
+            }
+        }
+
+        function getNationalfeiertagAT(format, year) {
+            if (format == formatDE) {
+                return "26.10." + year;
+            } else {
+                return year + "-10-26";
             }
         }
 
@@ -528,10 +692,18 @@ module.exports = function(RED) {
         }
 
         function getStMartin(format, year) {
-            if (format = formatDE) {
+            if (format == formatDE) {
                 return "11.11." + year;
             } else {
                 return year + "-11-11";
+            }
+        }
+
+        function getStLeopold(format, year) {
+            if (format == formatDE) {
+                return "15.11." + year;
+            } else {
+                return year + "-11-15";
             }
         }
 
@@ -551,6 +723,14 @@ module.exports = function(RED) {
                 return "6.12." + year;
             } else {
                 return year + "-12-6";
+            }
+        }
+
+        function getMariaeEmpfaengnis(format, year) {
+            if (format == formatDE) {
+                return "8.12." + year;
+            } else {
+                return year + "-12-8";
             }
         }
 
@@ -780,9 +960,18 @@ module.exports = function(RED) {
                 newYear[2] = getNeujahr(formatDateObj, currentYear + 1);
                 newYear[3] = getNeujahr(formatDE, currentYear + 1);
             }
+            if ((new Date(berchtoldstag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                berchtoldstag[2] = getBerchtoldstag(formatDateObj, currentYear + 1);
+                berchtoldstag[3] = getBerchtoldstag(formatDE, currentYear + 1);
+            }
             if ((new Date(holyThreeKings[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear + 1);
                 holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear + 1);
+            }
+            
+            if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear + 1);
+                weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear + 1);
             }
             if ((new Date(valentinstag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 valentinstag[2] = getValentinstag(formatDateObj, currentYear + 1);
@@ -800,6 +989,10 @@ module.exports = function(RED) {
                 aschermittwoch[2] = getAschermittwoch(formatDateObj, currentYear + 1);
                 aschermittwoch[3] = getAschermittwoch(formatDE, currentYear + 1);
             }
+            if ((new Date(stJosef[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                stJosef[2] = getStJosef(formatDateObj, currentYear + 1);
+                stJosef[3] = getStJosef(formatDE, currentYear + 1);
+            }
             if ((new Date(gruendonnerstag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 gruendonnerstag[2] = getGruendonnerstag(formatDateObj, currentYear + 1);
                 gruendonnerstag[3] = getGruendonnerstag(formatDE, currentYear + 1);
@@ -815,6 +1008,14 @@ module.exports = function(RED) {
             if ((new Date(easterMonday[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 easterMonday[2] = getOstermontag(formatDateObj, currentYear + 1);
                 easterMonday[3] = getOstermontag(formatDE, currentYear + 1);
+            }
+            if ((new Date(firstMay[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                firstMay[2] = getFirstMay(formatDateObj, currentYear + 1);
+                firstMay[3] = getFirstMay(formatDE, currentYear + 1);
+            }
+            if ((new Date(stFlorian[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                stFlorian[2] = getStFlorian(formatDateObj, currentYear + 1);
+                stFlorian[3] = getStFlorian(formatDE, currentYear + 1);
             }
             if ((new Date(christiHimmelfahrt[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 christiHimmelfahrt[2] = getChristiHimmelfahrt(formatDateObj, currentYear + 1);
@@ -832,17 +1033,29 @@ module.exports = function(RED) {
                 fronleichnam[2] = getFronleichnam(formatDateObj, currentYear + 1);
                 fronleichnam[3] = getFronleichnam(formatDE, currentYear + 1);
             }
+            if ((new Date(bundesfeierCH[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                bundesfeierCH[2] = getBundesfeierCH(formatDateObj, currentYear + 1);
+                bundesfeierCH[3] = getBundesfeierCH(formatDE, currentYear + 1);
+            }
             if ((new Date(mariaHimmelfahrt[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 mariaHimmelfahrt[2] = getMariaHimmelfahrt(formatDateObj, currentYear + 1);
                 mariaHimmelfahrt[3] = getMariaHimmelfahrt(formatDE, currentYear + 1);
+            }
+            if ((new Date(stRupert[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                stRupert[2] = getStRupert(formatDateObj, currentYear + 1);
+                stRupert[3] = getStRupert(formatDE, currentYear + 1);
             }
             if ((new Date(tagDerDeutschenEinheit[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 tagDerDeutschenEinheit[2] = getTagDerDeutschenEinheit(formatDateObj, currentYear + 1);
                 tagDerDeutschenEinheit[3] = getTagDerDeutschenEinheit(formatDE, currentYear + 1);
             }
-            if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
-                weiberfastnacht[2] = getWeiberfastnacht(formatDateObj, currentYear + 1);
-                weiberfastnacht[3] = getWeiberfastnacht(formatDE, currentYear + 1);
+            if ((new Date(tagDerVolksabstimmung[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                tagDerVolksabstimmung[2] = getTagDerVolksabstimmung(formatDateObj, currentYear + 1);
+                tagDerVolksabstimmung[3] = getTagDerVolksabstimmung(formatDE, currentYear + 1);
+            }
+            if ((new Date(nationalfeiertagAT[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                nationalfeiertagAT[2] = getNationalfeiertagAT(formatDateObj, currentYear + 1);
+                nationalfeiertagAT[3] = getNationalfeiertagAT(formatDE, currentYear + 1);
             }
             if ((new Date(halloween[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 halloween[2] = getHalloween(formatDateObj, currentYear + 1);
@@ -856,9 +1069,21 @@ module.exports = function(RED) {
                 stMartin[2] = getStMartin(formatDateObj, currentYear + 1);
                 stMartin[3] = getStMartin(formatDE, currentYear + 1);
             }
+            if ((new Date(stLeopold[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                stLeopold[2] = getStLeopold(formatDateObj, currentYear + 1);
+                stLeopold[3] = getStLeopold(formatDE, currentYear + 1);
+            }
             if ((new Date(bussUndBettag[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 bussUndBettag[2] = getBussUndBettag(formatDateObj, currentYear + 1);
                 bussUndBettag[3] = getBussUndBettag(formatDE, currentYear + 1);
+            }
+            if ((new Date(santa[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                santa[2] = getNikolaus(formatDateObj, currentYear + 1);
+                santa[3] = getNikolaus(formatDE, currentYear + 1);
+            }
+            if ((new Date(mariaeEmpfaengnis[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                mariaeEmpfaengnis[2] = getMariaeEmpfaengnis(formatDateObj, currentYear + 1);
+                mariaeEmpfaengnis[3] = getMariaeEmpfaengnis(formatDE, currentYear + 1);
             }
             if ((new Date(advent1[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 advent1[2] = getAdvent1(formatDateObj, currentYear + 1);
@@ -895,10 +1120,6 @@ module.exports = function(RED) {
             if ((new Date(ownHoliday1[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 ownHoliday1[2] = getOwnHoliday1(formatDateObj, currentYear + 1);
                 ownHoliday1[3] = getOwnHoliday1(formatDE, currentYear + 1);
-            }
-            if ((new Date(santa[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
-                santa[2] = getNikolaus(formatDateObj, currentYear + 1);
-                santa[3] = getNikolaus(formatDE, currentYear + 1);
             }
             if ((new Date(ownHoliday2[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 ownHoliday2[2] = getOwnHoliday2(formatDateObj, currentYear + 1);
@@ -956,9 +1177,17 @@ module.exports = function(RED) {
             // check New Year is activated
             if (checkNewYear) {
                 holiday.push(newYear); // add New Year to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(newYear); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Berchtoldstag is activated
+            if (checkBerchtoldstag) {
+                holiday.push(berchtoldstag); // add Bercholdstag to holiday array
+            } else {
+                var index = holiday.indexOf(berchtoldstag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -966,8 +1195,7 @@ module.exports = function(RED) {
             // check Holy Three Kings is activated
             if (checkHolyThreeKings) {
                 holiday.push(holyThreeKings); // add Holy Three Kings to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(holyThreeKings); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -976,8 +1204,7 @@ module.exports = function(RED) {
             // check Weiberfastnacht is activated
             if (checkWeiberfastnacht) {
                 holiday.push(weiberfastnacht); // add Weiberfastnacht to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(weiberfastnacht); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -986,8 +1213,7 @@ module.exports = function(RED) {
             // check Valentinstag is activated
             if (checkValentinstag) {
                 holiday.push(valentinstag); // add Valentinstag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(valentinstag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -996,8 +1222,7 @@ module.exports = function(RED) {
             // check Rosenmontag is activated
             if (checkRosenmontag) {
                 holiday.push(rosenmontag); // add Rosenmontag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(rosenmontag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1006,8 +1231,7 @@ module.exports = function(RED) {
             // check Fastnachtsdienstag is activated
             if (checkFastnachtsdienstag) {
                 holiday.push(fastnachtsdienstag); // add Fastnachtsdienstag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(fastnachtsdienstag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1016,9 +1240,17 @@ module.exports = function(RED) {
             // check Aschermittwoch is activated
             if (checkAschermittwoch) {
                 holiday.push(aschermittwoch); // add Aschermittwoch to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(aschermittwoch); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check St. Josef is activated
+            if (checkStJosef) {
+                holiday.push(stJosef); // add St. Josef to holiday array
+            } else {
+                var index = holiday.indexOf(stJosef); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1026,8 +1258,7 @@ module.exports = function(RED) {
             // check Gründonnerstag is activated
             if (checkGruendonnerstag) {
                 holiday.push(gruendonnerstag); // add Gründonnerstag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(gruendonnerstag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1036,8 +1267,7 @@ module.exports = function(RED) {
             // check Karfreitag is activated
             if (checkKarfreitag) {
                 holiday.push(karfreitag); // add Karfreitag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(karfreitag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1046,8 +1276,7 @@ module.exports = function(RED) {
             // check Easter Sunday is activated
             if (checkEasterSunday) {
                 holiday.push(easterSunday); // add Easter Sunday to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(easterSunday); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1056,9 +1285,26 @@ module.exports = function(RED) {
             // check Easter Monday is activated
             if (checkEasterMonday) {
                 holiday.push(easterMonday); // add Easter Monday to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(easterMonday); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check First May is activated
+            if (checkFirstMay) {
+                holiday.push(firstMay); // add First May to holiday array
+            } else {
+                var index = holiday.indexOf(firstMay); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check St. Florian is activated
+            if (checkStFlorian) {
+                holiday.push(stFlorian); // add St. Florian to holiday array
+            } else {
+                var index = holiday.indexOf(stFlorian); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1066,8 +1312,7 @@ module.exports = function(RED) {
             // check Christi Himmelfahrt is activated
             if (checkChristiHimmelfahrt) {
                 holiday.push(christiHimmelfahrt); // add Christi Himmelfahrt to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(christiHimmelfahrt); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1076,8 +1321,7 @@ module.exports = function(RED) {
             // check Pfingstsonntag is activated
             if (checkPfingstsonntag) {
                 holiday.push(pfingstsonntag); // add Pfingstsonntag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(pfingstsonntag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1086,8 +1330,7 @@ module.exports = function(RED) {
             // check Pfingstmontag is activated
             if (checkPfingstmontag) {
                 holiday.push(pfingstmontag); // add Pfingstmontag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(pfingstmontag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1096,9 +1339,17 @@ module.exports = function(RED) {
             // check Fronleichnam is activated
             if (checkFronleichnam) {
                 holiday.push(fronleichnam); // add Fronleichnam to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(fronleichnam); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Bundesfeier CH is activated
+            if (checkBundesfeierCH) {
+                holiday.push(bundesfeierCH); // add Bundesfeier CH to holiday array
+            } else {
+                var index = holiday.indexOf(bundesfeierCH); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1106,9 +1357,17 @@ module.exports = function(RED) {
             // check Maria Himmelfahrt is activated
             if (checkMariaHimmelfahrt) {
                 holiday.push(mariaHimmelfahrt); // add Maria Himmelfahrt to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(mariaHimmelfahrt); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check St. Rupert is activated
+            if (checkStRupert) {
+                holiday.push(stRupert); // add St. Rupert to holiday array
+            } else {
+                var index = holiday.indexOf(stRupert); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1116,9 +1375,26 @@ module.exports = function(RED) {
             // check Tag der Deutschen Einheit is activated
             if (checkTagDerDeutschenEinheit) {
                 holiday.push(tagDerDeutschenEinheit); // add Tag der Deutschen Einheit to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(tagDerDeutschenEinheit); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Tag der Volksabstimmung is activated
+            if (checkTagDerVolksabstimmung) {
+                holiday.push(tagDerVolksabstimmung); // add Tag der Volksabstimmung to holiday array
+            } else {
+                var index = holiday.indexOf(tagDerVolksabstimmung); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Nationalfeiertag AT is activated
+            if (checkNationalfeiertagAT) {
+                holiday.push(nationalfeiertagAT); // add Nationalfeiertag AT to holiday array
+            } else {
+                var index = holiday.indexOf(nationalfeiertagAT); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1126,8 +1402,7 @@ module.exports = function(RED) {
             // check Halloween is activated
             if (checkHalloween) {
                 holiday.push(halloween); // add Halloween to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(halloween); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1136,8 +1411,7 @@ module.exports = function(RED) {
             // check Allerheiligen is activated
             if (checkAllerheiligen) {
                 holiday.push(allerheiligen); // add Allerheiligen to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(allerheiligen); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1146,9 +1420,17 @@ module.exports = function(RED) {
             // check St. Martin is activated
             if (checkStMartin) {
                 holiday.push(stMartin); // add St. Martin to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(stMartin); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check St. Leopold is activated
+            if (checkStLeopold) {
+                holiday.push(stLeopold); // add St. Leopold to holiday array
+            } else {
+                var index = holiday.indexOf(stLeopold); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1156,8 +1438,7 @@ module.exports = function(RED) {
             // check Buß und Bettag is activated
             if (checkBussUndBettag) {
                 holiday.push(bussUndBettag); // add Buß und Bettag to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(bussUndBettag); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1166,9 +1447,17 @@ module.exports = function(RED) {
             // check Santa is activated
             if (checkSanta) {
                 holiday.push(santa); // add Santa to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(santa); // get index of item
+                if (index >= 0) {
+                    holiday.splice(index); // remove item at index
+                }
+            }
+            // check Mariä Empfängnis is activated
+            if (checkMariaeEmpfaengnis) {
+                holiday.push(mariaeEmpfaengnis); // add Mariö Empfängnis to holiday array
+            } else {
+                var index = holiday.indexOf(mariaeEmpfaengnis); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }
@@ -1176,8 +1465,7 @@ module.exports = function(RED) {
             // check 1. Advent is activated
             if (checkadvent1) {
                 holiday.push(advent1); // add 1. Advent to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(advent1); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1186,8 +1474,7 @@ module.exports = function(RED) {
             // check 2. Advent is activated
             if (checkAdvent2) {
                 holiday.push(advent2); // add 2. Advent to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(advent2); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1196,8 +1483,7 @@ module.exports = function(RED) {
             // check 3. Advent is activated
             if (checkAdvent3) {
                 holiday.push(advent3); // add 3. Advent to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(advent3); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1206,8 +1492,7 @@ module.exports = function(RED) {
             // check 4. Advent is activated
             if (checkAdvent4) {
                 holiday.push(advent4); // add 4. Advent to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(advent4); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1216,8 +1501,7 @@ module.exports = function(RED) {
             // check Christmas Eve is activated
             if (checkChristmasEve) {
                 holiday.push(christmasEve); // add Christmas Eve to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(christmasEve); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1226,8 +1510,7 @@ module.exports = function(RED) {
             // check First day of Christmas is activted
             if (checkFirstDayChristmas) {
                 holiday.push(firstDayChristmas); // add First day of Christmas to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(firstDayChristmas); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1236,8 +1519,7 @@ module.exports = function(RED) {
             // check Second day of Christmas is activated
             if (checkSecondDayChristmas) {
                 holiday.push(secondDayChristmas); // add Second Christmas Day to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(secondDayChristmas); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1246,8 +1528,7 @@ module.exports = function(RED) {
             // check New Years Eve is activated
             if (checkNewYearsEve) {
                 holiday.push(newYearsEve); // add New Years Eve to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(newYearsEve); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1256,8 +1537,7 @@ module.exports = function(RED) {
             //check Own Holiday 1 is activated
             if (checkOwnHoliday1) {
                 holiday.push(ownHoliday1); // add Won Holiday 1 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday1); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1266,8 +1546,7 @@ module.exports = function(RED) {
             //check Own Holiday 2 is activated
             if (checkOwnHoliday2) {
                 holiday.push(ownHoliday2); // add Won Holiday 2 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday2); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1276,8 +1555,7 @@ module.exports = function(RED) {
             //check Own Holiday 3 is activated
             if (checkOwnHoliday3) {
                 holiday.push(ownHoliday3); // add Won Holiday 3 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday3); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1286,8 +1564,7 @@ module.exports = function(RED) {
             //check Own Holiday 4 is activated
             if (checkOwnHoliday4) {
                 holiday.push(ownHoliday4); // add Won Holiday 4 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday4); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1296,8 +1573,7 @@ module.exports = function(RED) {
             //check Own Holiday 5 is activated
             if (checkOwnHoliday5) {
                 holiday.push(ownHoliday5); // add Won Holiday 5 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday5); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1306,8 +1582,7 @@ module.exports = function(RED) {
             //check Own Holiday 6 is activated
             if (checkOwnHoliday6) {
                 holiday.push(ownHoliday6); // add Won Holiday 6 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday6); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1316,8 +1591,7 @@ module.exports = function(RED) {
             //check Own Holiday 7 is activated
             if (checkOwnHoliday7) {
                 holiday.push(ownHoliday7); // add Won Holiday 7 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday7); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1326,8 +1600,7 @@ module.exports = function(RED) {
             //check Own Holiday 8 is activated
             if (checkOwnHoliday8) {
                 holiday.push(ownHoliday8); // add Won Holiday 8 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday8); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1336,8 +1609,7 @@ module.exports = function(RED) {
             //check Own Holiday 9 is activated
             if (checkOwnHoliday9) {
                 holiday.push(ownHoliday9); // add Won Holiday 9 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday9); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
@@ -1346,8 +1618,7 @@ module.exports = function(RED) {
             //check Own Holiday 10 is activated
             if (checkOwnHoliday10) {
                 holiday.push(ownHoliday10); // add Won Holiday 10 to holiday array
-            }
-            else {
+            } else {
                 var index = holiday.indexOf(ownHoliday10); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index

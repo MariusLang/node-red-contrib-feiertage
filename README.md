@@ -7,7 +7,20 @@
 
 [![NPM](https://nodei.co/npm/node-red-contrib-feiertage.png?compact=true)](https://nodei.co/npm/node-red-contrib-feiertage/)
 
-The Node Red **Feiertage** node is the ultimative node to get informations about german and austrian holidays.
+The Node Red **Feiertage** node is the ultimative node to get informations about german, austrian and swiss holidays.
+
+Is there any holiday missing? Write an issue! I'm going to add this holiday for you.
+
+This node contains all german, austrian and swiss holidays. To get the perfect node for your country read the point below.
+
+## You're living in Germany, Austria or Switzerland?
+
+country | Node Red node
+--- | ---
+Germany | [node-red-contrib-feiertage-germany](https://github.com/MariusLang/node-red-contrib-feiertage)
+Austria | [node-red-contrib-feiertage-austria](https://github.com/MariusLang/node-red-contrib-feiertage-austria)
+Switzerland | *coming soon*
+Or you want all in one node (Germany, Austria, Switzerland) | [node-red-contrib-feiertage](https://github.com/MariusLang/node-red-contrib-feiertage)
 
 ## Installation
 ```
@@ -58,8 +71,8 @@ Holidays are always listed into an array[3].
 
 index | output
 --- | ---
-0 | english name
-1 | german name
+0 | identifier
+1 | name
 2 | date (yyyy-mm-dd)
 3 | german date (dd.mm.yyyy)
 

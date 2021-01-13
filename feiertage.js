@@ -417,6 +417,9 @@ module.exports = function(RED) {
                 case "nextThreeHolidays":
                     sendNextThreeHolidays(); // outputs next 3 holidays
                     break;
+                case "isChristmasTime":
+                    isChristmasTime(); // outputs wether today is Christmas time
+                    break;
             }
         });
 
@@ -952,6 +955,15 @@ module.exports = function(RED) {
             node.send({payload: holiday[holiday.length - 1]}); // send last item of holiday array
             node.send({payload: holiday[holiday.length - 2]}); // send penultimate item of holiday array
             node.send({payload: holiday[holiday.length - 3]}); // send before penultimate item of holiday array
+        }
+
+        function isChristmasTime() {
+            if (new Date(getAdvent1(formatDateObj, currentYear)).valueOf() <= new Date() && 
+                new Date(getHeiligeDreiKoenige(formatDateObj, currentYear)).valueOf() >= new Date().valueOf()) {
+                node.send({payload: true})
+            } else {
+                node.send({payload: false});
+            }
         }
 
         function refreshHoliday() {

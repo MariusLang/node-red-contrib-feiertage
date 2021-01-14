@@ -961,7 +961,7 @@ module.exports = function(RED) {
             if (new Date(advent1[2]).valueOf() <= new Date().valueOf() &&
                 new Date(newYearsEve[2]).valueOf() >= new Date().valueOf() ||
                 new Date(newYear[2]).valueOf() <= new Date().valueOf() &&
-                new Date(holyThreeKings[2]).valueOf() >= new Date().valueOf()) {
+                new Date(epiphany[2]).valueOf() >= new Date().valueOf()) {
                 node.send({payload: true});
             } else {
                 node.send({payload: false});

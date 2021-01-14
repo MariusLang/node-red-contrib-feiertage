@@ -958,11 +958,12 @@ module.exports = function(RED) {
         }
 
         function isChristmasTime() {
+            // check current date is between first advent and Holy three Kings
             if (new Date(advent1).valueOf() <= new Date().valueOf() &&
                 new Date(holyThreeKings).valueOf() >= new Date().valueOf()) {
-                node.send({payload: true})
+                node.send({payload: true}); // send true
             } else {
-                node.send({payload: false});
+                node.send({payload: false}); // send false
             }
         }
 

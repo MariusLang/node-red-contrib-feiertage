@@ -957,6 +957,17 @@ module.exports = function(RED) {
             node.send({payload: holiday[holiday.length - 3]}); // send before penultimate item of holiday array
         }
 
+        function isChristmasTime() {
+            if (new Date(advent1[2]).valueOf() <= new Date().valueOf() &&
+                new Date(newYearsEve[2]).valueOf() >= new Date().valueOf() ||
+                new Date(newYear[2]).valueOf() <= new Date().valueOf() &&
+                new Date(holyThreeKings[2]).valueOf() >= new Date().valueOf()) {
+                node.send({payload: true});
+            } else {
+                node.send({payload: false});
+            }
+        }
+
         function refreshHoliday() {
             // if holiday is already over create new date (next year)
             if ((new Date(newYear[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {

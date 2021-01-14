@@ -958,8 +958,8 @@ module.exports = function(RED) {
         }
 
         function isChristmasTime() {
-            if (new Date(getAdvent1(formatDateObj, currentYear)).valueOf() <= new Date() && 
-                new Date(getHeiligeDreiKoenige(formatDateObj, currentYear)).valueOf() >= new Date().valueOf()) {
+            if (new Date(advent1).valueOf() <= new Date().valueOf() &&
+                new Date(holyThreeKings).valueOf() >= new Date().valueOf()) {
                 node.send({payload: true})
             } else {
                 node.send({payload: false});

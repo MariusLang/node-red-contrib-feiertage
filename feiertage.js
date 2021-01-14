@@ -8,8 +8,8 @@ module.exports = function(RED) {
         var newYearName = config.neujahrName; // New Year Name
         var checkBerchtoldstag = config.berchtoldstag; // checkbox Berchtoldstag
         var berchtoldstagName = config.berchtoldstagName; // Berchtoldstag Name
-        var checkHolyThreeKings = config.heiligeDreiKoenige; // checkboy Holy Three Kings
-        var holyThreeKingsName = config.heiligeDreiKoenigeName; // Holy Three Kings Name
+        var checkEpiphany = config.heiligeDreiKoenige; // checkboy Epiphany
+        var epiphanyName = config.heiligeDreiKoenigeName; // Epiphany Name
         var checkWeiberfastnacht = config.weiberfastnacht; // checkbox Weiberfastnacht
         var weiberfastnachtName = config.weiberfastnachtName; // Weiberfastnacht Name
         var checkValentinstag = config.valentinstag; // checkbox Valentinstag
@@ -156,11 +156,11 @@ module.exports = function(RED) {
         berchtoldstag[1] = berchtoldstagName; // name
         berchtoldstag[2] = getBerchtoldstag(formatDateObj, currentYear);
         berchtoldstag[3] = getBerchtoldstag(formatDE, currentYear);
-        var holyThreeKings = []; // day of Holy Three Kings
-        holyThreeKings[0] = "Holy Three Kings"; // id
-        holyThreeKings[1] = holyThreeKingsName; // name
-        holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear);
-        holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear);
+        var epiphany = []; // day of Holy Three Kings
+        epiphany[0] = "Epiphany"; // id
+        epiphany[1] = epiphanyName; // name
+        epiphany[2] = getHeiligeDreiKoenige(formatDateObj, currentYear);
+        epiphany[3] = getHeiligeDreiKoenige(formatDE, currentYear);
         var weiberfastnacht = []; // day of Weiberfastnacht
         weiberfastnacht[0] = "Weiberfastnacht"; // id
         weiberfastnacht[1] = weiberfastnachtName; // name
@@ -978,9 +978,9 @@ module.exports = function(RED) {
                 berchtoldstag[2] = getBerchtoldstag(formatDateObj, currentYear + 1);
                 berchtoldstag[3] = getBerchtoldstag(formatDE, currentYear + 1);
             }
-            if ((new Date(holyThreeKings[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
-                holyThreeKings[2] = getHeiligeDreiKoenige(formatDateObj, currentYear + 1);
-                holyThreeKings[3] = getHeiligeDreiKoenige(formatDE, currentYear + 1);
+            if ((new Date(epiphany[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
+                epiphany[2] = getHeiligeDreiKoenige(formatDateObj, currentYear + 1);
+                epiphany[3] = getHeiligeDreiKoenige(formatDE, currentYear + 1);
             }
             
             if ((new Date(weiberfastnacht[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
@@ -1206,11 +1206,11 @@ module.exports = function(RED) {
                     holiday.splice(index); // remove item at index
                 }
             }
-            // check Holy Three Kings is activated
-            if (checkHolyThreeKings) {
-                holiday.push(holyThreeKings); // add Holy Three Kings to holiday array
+            // check Epiphany is activated
+            if (checkEpiphany) {
+                holiday.push(epiphany); // add Epiphany to holiday array
             } else {
-                var index = holiday.indexOf(holyThreeKings); // get index of item
+                var index = holiday.indexOf(epiphany); // get index of item
                 if (index >= 0) {
                     holiday.splice(index); // remove item at index
                 }

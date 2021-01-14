@@ -60,6 +60,7 @@ The input can be used to trigger special outputs. The keywords are listed below.
 keyoword | output
 --- | ---
 isTodayHoliday | boolean wether today is holiday
+isChristmasTime | boolean wether today is Christmas time (1. Advent - Heilige drei Könige)
 nextHoliday | information about next holiday
 nextThreeHolidays | informations about next 3 holidays
 all | informations about all holidays

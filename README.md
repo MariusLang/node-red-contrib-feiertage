@@ -57,7 +57,7 @@ sudo reboot
 ### Input
 The input can be used to trigger special outputs. The keywords are listed below.
 
-keyoword | output
+msg.payload | output
 --- | ---
 isTodayHoliday | boolean wether today is holiday
 isChristmasTime | boolean wether today is Christmas time (1. Advent - Heilige drei Könige)

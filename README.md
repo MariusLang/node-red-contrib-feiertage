@@ -9,7 +9,7 @@
 
 The Node Red **Feiertage** node is the ultimative node to get informations about german, austrian and swiss holidays.
 
-Is there any holiday missing? Write an issue! I'm going to add this holiday for you.
+Are there any holidays missing? Write an issue! I'm going to add these holidays for you.
 
 This node contains all german, austrian and swiss holidays. To get the perfect node for your country read the point below.
 
@@ -57,9 +57,10 @@ sudo reboot
 ### Input
 The input can be used to trigger special outputs. The keywords are listed below.
 
-keyoword | output
+msg.payload | output
 --- | ---
 isTodayHoliday | boolean wether today is holiday
+isChristmasTime | boolean wether today is Christmas time (1. Advent - Heilige drei Könige)
 nextHoliday | information about next holiday
 nextThreeHolidays | informations about next 3 holidays
 all | informations about all holidays
@@ -67,7 +68,7 @@ all | informations about all holidays
 ### Output
 The output can be used to listen to automatic and user triggered events. Every day at 00:01 o'clock the node automaticly outputs a boolean value wether today is a holiday.
 
-Holidays are always listed into an array[3].
+Holidays are always listed into an array[4].
 
 index | output
 --- | ---

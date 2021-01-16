@@ -577,10 +577,10 @@ module.exports = function(RED) {
         }
 
         function isChristmasTime() {
-            if (new Date(advent1[2]).valueOf() <= new Date().valueOf() &&
-                new Date(newYearsEve[2]).valueOf() >= new Date().valueOf() ||
-                new Date(newYear[2]).valueOf() <= new Date().valueOf() &&
-                new Date(epiphany[2]).valueOf() >= new Date().valueOf()) {
+            if (new Date(Feiertage.getAdvent1(Feiertage.formatDateObj, currentYear)).valueOf() <= new Date().valueOf() &&
+                new Date(Feiertage.getSilvester(Feiertage.formatDateObj, currentYear)).valueOf() >= new Date().valueOf() ||
+                new Date(Feiertage.getNeujahr(Feiertage.formatDateObj, currentYear)).valueOf() <= new Date().valueOf() &&
+                new Date(Feiertage.getHeiligeDreiKoenige(Feiertage.formatDateObj, currentYear)).valueOf() >= new Date().valueOf()) {
                 node.send({payload: true});
             } else {
                 node.send({payload: false});

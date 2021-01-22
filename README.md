@@ -64,6 +64,7 @@ isChristmasTime | boolean wether today is Christmas time (1. Advent - Heilige dr
 nextHoliday | information about next holiday
 nextThreeHolidays | informations about next 3 holidays
 all | informations about all holidays
+daysUntilNextHoliday | number of days until next holidays
 
 ### Output
 The output can be used to listen to automatic and user triggered events. Every day at 00:01 o'clock the node automaticly outputs a boolean value wether today is a holiday.

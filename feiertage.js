@@ -428,8 +428,8 @@ module.exports = function(RED) {
                 case "isChristmasTime":
                     isChristmasTime(); // outputs wether today is Christmas time
                     break;
-                case "timeUntilNextHoliday":
-                    timeUntilNextHoliday();
+                case "daysUntilNextHoliday":
+                    daysUntilNextHoliday();
                     break;
             }
         });
@@ -590,7 +590,7 @@ module.exports = function(RED) {
             }
         }
 
-        function timeUntilNextHoliday() {
+        function daysUntilNextHoliday() {
             refreshHoliday();
             sortHolidayArray();
             let checkDate = holiday[holiday.length - 1];

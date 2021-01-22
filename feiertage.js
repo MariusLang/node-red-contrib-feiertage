@@ -5,7 +5,7 @@ module.exports = function(RED) {
         var node = this;
 
         // include getfeiertage npm package
-        const Feiertage;
+        var Feiertage;
         try {
             Feiertage = require('getfeiertage.js').Feiertage;
         } catch (error) {

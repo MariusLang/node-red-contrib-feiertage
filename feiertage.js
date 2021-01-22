@@ -428,6 +428,9 @@ module.exports = function(RED) {
                 case "isChristmasTime":
                     isChristmasTime(); // outputs wether today is Christmas time
                     break;
+                case "timeUntilNextHoliday":
+                    timeUntilNextHoliday();
+                    break;
             }
         });
 
@@ -585,6 +588,14 @@ module.exports = function(RED) {
             } else {
                 node.send({payload: false});
             }
+        }
+
+        function timeUntilNextHoliday() {
+            refreshHoliday();
+            sortHolidayArray();
+            let checkDate = holiday[holiday.length - 1];
+            let difference = (new Date(checkDate[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) / 86400000;
+            node.send({payload: difference});
         }
 
         function refreshHoliday() {

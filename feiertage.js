@@ -478,11 +478,8 @@ module.exports = function(RED) {
                 case "isChristmasTime":
                     isChristmasTime(); // outputs wether today is Christmas time
                     break;
-                case "daysUntilNextHoliday":
+                case "daysUntilNextHoliday": // outputs days until next holiday
                     daysUntilNextHoliday();
-                    break;
-                case "123":
-                    node.send({payload: newYear});
                     break;
             }
         });

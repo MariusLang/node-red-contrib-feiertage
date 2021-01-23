@@ -647,7 +647,7 @@ module.exports = function(RED) {
             refreshHoliday();
             sortHolidayArray();
             let checkDate = holiday[holiday.length - 1];
-            let difference = (new Date(checkDate[2]) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) / 86400000;
+            let difference = (new Date(checkDate.dateObj) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) / 86400000;
             node.send({payload: difference});
         }
 

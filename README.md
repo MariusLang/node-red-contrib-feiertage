@@ -69,14 +69,26 @@ daysUntilNextHoliday | number of days until next holidays
 ### Output
 The output can be used to listen to automatic and user triggered events. Every day at 00:01 o'clock the node automaticly outputs a boolean value wether today is a holiday.
 
-Holidays are always listed into an object.
+You decide what you want to receive: Object or Array!
+To enable output as array open the node settings and hit the checkbox **output: Array instead of Object** at the bottom.
+
+holiday object output:
 
 key | output
 --- | ---
-id | identifier
+id | id
 name | name
 dateObj | date (yyyy-mm-dd)
 dateDE | german date (dd.mm.yyyy)
+
+holiday array[3] output:
+
+index | output
+--- | ---
+0 | id
+1 | name
+2 | date (yyyy-mm-dd)
+3 | german date (dd.mm.yyyy)
 
 ### Own Holidays
 You can chose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday. Pay attention: The node does NOT validate your own dates. So if you set the 30 febrary or the 31 april as date you wont't get an error message.

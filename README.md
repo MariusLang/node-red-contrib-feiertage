@@ -1,4 +1,4 @@
-![banner](https://github.com/MariusLang/node-red-contrib-feiertage/blob/master/img/feiertage_banner.svg)
+![banner](img/feiertage_banner.svg)
 # Node Red Feiertage
 
 [![NPM](https://img.shields.io/npm/v/node-red-contrib-feiertage)](https://www.npmjs.com/package/node-red-contrib-feiertage)

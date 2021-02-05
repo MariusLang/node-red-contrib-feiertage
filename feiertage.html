@@ -775,7 +775,6 @@
         outputLabels: "feiertage",
         defaults: {
             name: {value: "Feiertage", required: true},
-            local: {value: "DE", required: true},
             neujahr: {value: true},
             neujahrName: {value: "Neujahr", required: true},
             berchtoldstag: {value: true},
@@ -815,7 +814,9 @@
             fronleichnam: {value: true},
             fronleichnamName: {value: "Fronleichnam", required: true},
             bundesfeierCH: {value: true},
-            bundesfeierCHName: {value: "Bundesfeier", required: true},
+            peterUndPaul: {value: "Peter und Paul", require: true},
+            peterUndPaulName: {value: true},
+            bundesfeierCHName: {value: "Bundesfeiertag", required: true},
             mariaHimmelfahrt: {value: true},
             mariaHimmelfahrtName: {value: "Maria Himmelfahrt", required: true},
             stRupert: {value: true},
@@ -926,7 +927,7 @@
         document.getElementById('node-input-pfingstsonntagName').value = "Pfingstsonntag";
         document.getElementById('node-input-pfingstmontagName').value = "Pfingstmontag";
         document.getElementById('node-input-fronleichnamName').value = "Fronleichnam";
-        document.getElementById('node-input-bundesfeierCHName').value = "Bundesfeier";
+        document.getElementById('node-input-bundesfeierCHName').value = "Bundesfeiertag";
         document.getElementById('node-input-mariaHimmelfahrtName').value = "Maria Himmelfahrt";
         document.getElementById('node-input-stRupertName').value = "St. Rupert";
         document.getElementById('node-input-tagDerDeutschenEinheitName').value = "Tag der Deutschen Einheit";

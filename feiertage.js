@@ -270,7 +270,7 @@ module.exports = function(RED) {
             dateDE: Feiertage.getFronleichnam(Feiertage.formatDE, currentYear)
         }
         const bundesfeierCH = {
-            id: "Bundesfeier CH",
+            id: "Bundesfeiertag CH",
             name: bundesfeierCHName,
             dateObj: Feiertage.getBundesfeierCH(Feiertage.formatDateObj, currentYear),
             dateDE: Feiertage.getBundesfeierCH(Feiertage.formatDE, currentYear)
@@ -677,7 +677,6 @@ module.exports = function(RED) {
                 epiphany.dateObj = Feiertage.getHeiligeDreiKoenige(Feiertage.formatDateObj, currentYear + 1);
                 epiphany.dateDE = Feiertage.getHeiligeDreiKoenige(Feiertage.formatDE, currentYear + 1);
             }
-            
             if ((new Date(weiberfastnacht.dateObj) - new Date(currentYear + "-" + currentMonth + "-" + currentDay)) < 0) {
                 weiberfastnacht.dateObj = Feiertage.getWeiberfastnacht(Feiertage.formatDateObj, currentYear + 1);
                 weiberfastnacht.datedE = Feiertage.getWeiberfastnacht(Feiertage.formatDE, currentYear + 1);

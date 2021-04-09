@@ -7,8 +7,6 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config);
     const node = this;
 
-    // eslint-disable-next-line global-require
-    // eslint-disable-next-line import/no-unresolved
     const Feiertage = require('getfeiertage.js').Feiertage;
 
     const checkNewYear = config.neujahr; // checkbox New Year
@@ -153,6 +151,15 @@ module.exports = function (RED) {
     let currentDay;
     let currentHour;
     let currentMinute;
+
+    function setCurrentDate() {
+      const currentDate = new Date(); // create current date
+      currentYear = currentDate.getFullYear(); // set current year
+      currentMonth = currentDate.getMonth() + 1; // set current month
+      currentDay = currentDate.getDate(); // set current day
+      currentHour = currentDate.getHours(); // set current hour
+      currentMinute = currentDate.getMinutes(); // set current minute
+    }
 
     setCurrentDate();
 
@@ -1037,15 +1044,6 @@ module.exports = function (RED) {
 
     checkbox();
 
-    function setCurrentDate() {
-      const currentDate = new Date(); // create current date
-      currentYear = currentDate.getFullYear(); // set current year
-      currentMonth = currentDate.getMonth() + 1; // set current month
-      currentDay = currentDate.getDate(); // set current day
-      currentHour = currentDate.getHours(); // set current hour
-      currentMinute = currentDate.getMinutes(); // set current minute
-    }
-
     function sortHolidayArray() {
       // sorts holiday array
       // latest date at last
@@ -1061,7 +1059,6 @@ module.exports = function (RED) {
     }
 
     function refreshHoliday() {
-      setCurrentDate();
       // if holiday is already over create new date (next year)
       if ((new Date(newYear.dateObj) - new Date(`${currentYear}-${currentMonth}-${currentDay}`)) < 0) {
         newYear.dateObj = Feiertage.getNeujahr(Feiertage.formatDateObj, currentYear + 1);
@@ -1295,7 +1292,6 @@ module.exports = function (RED) {
 
     function sendAll() {
       // outputs all holidays
-      setCurrentDate();
       refreshHoliday();
       sortHolidayArray();
       for (let i = 0; i < holiday.length; i += 1) {
@@ -1309,7 +1305,6 @@ module.exports = function (RED) {
 
     function isTodayHoliday() {
       // outputs boolean wether today is holiday
-      setCurrentDate();
       refreshHoliday(); // refresh holiday array
       let todayHoliday;
       if (holiday.length === 0) {
@@ -1330,7 +1325,6 @@ module.exports = function (RED) {
 
     function sendNextHoliday() {
       // outputs next holiday
-      setCurrentDate();
       refreshHoliday(); // refresh holiday array
       sortHolidayArray(); // sort holiday array
       if (checkArray) {
@@ -1343,7 +1337,6 @@ module.exports = function (RED) {
     }
 
     function sendNextThreeHolidays() {
-      setCurrentDate();
       refreshHoliday(); // refresh holiday array
       sortHolidayArray(); // sort holiday array
       if (checkArray) {
@@ -1364,7 +1357,6 @@ module.exports = function (RED) {
     }
 
     function isChristmasTime() {
-      setCurrentDate();
       if (new Date(Feiertage.getAdvent1(
         Feiertage.formatDateObj, currentYear,
       )).valueOf() <= new Date().valueOf()
@@ -1385,7 +1377,6 @@ module.exports = function (RED) {
     }
 
     function daysUntilNextHoliday() {
-      setCurrentDate();
       refreshHoliday();
       sortHolidayArray();
       const checkDate = holiday[holiday.length - 1];
@@ -1397,31 +1388,24 @@ module.exports = function (RED) {
       const payload = msg.payload;
       switch (payload) {
         case 'all':
-          setCurrentDate();
           sendAll();
           break;
         case 'isTodayHoliday':
-          setCurrentDate();
           isTodayHoliday();
           break;
         case 'nextHoliday':
-          setCurrentDate();
           sendNextHoliday();
           break;
         case 'nextThreeHolidays':
-          setCurrentDate();
           sendNextThreeHolidays();
           break;
         case 'isChristmasTime':
-          setCurrentDate();
           isChristmasTime();
           break;
         case 'daysUntilNextHoliday':
-          setCurrentDate();
           daysUntilNextHoliday();
           break;
         default:
-          setCurrentDate();
           isTodayHoliday();
           break;
       }

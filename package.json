@@ -1,7 +1,7 @@
 {
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {
-    "getfeiertage.js": "1.1.1"
+    "getfeiertage.js": "1.2.7"
   },
   "deprecated": false,
   "description": "NodeRED node to get german, austrian, swiss holidays and own special dates",
@@ -36,6 +36,12 @@
   "homepage": "https://github.com/MariusLang/node-red-contrib-feiertage#readme",
   "main": "feiertage.js",
   "scripts": {
+    "lint": "eslint ./",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   }
 }

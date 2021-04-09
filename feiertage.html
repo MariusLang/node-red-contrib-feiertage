@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <script type="text/html" data-template-name="feiertage">
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-neujahr" placeholder="Neujahr"></span>
@@ -718,12 +719,22 @@
 
     <hr>
 
+    <ol id="list" class="list"></ol>
+
+    <hr>
+
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-array" placeholder="Array"> <i class="fa fa-tasks"></i> output: Array instead of Object</span>
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-ownholiday" placeholder="Own Holiday"></span>
+        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-ownHolidayName"
+            placeholder="Own Holiday">
     </div>
 </script>
 
@@ -768,142 +779,312 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('feiertage',{
+    function getData(rule) {
+        return {
+            ownHolidayCheckbox: rule.find('.node-input-item-checkbox').val(),
+            ownHolidayName: rule.find('.node-input-item-ownHolidayName').val(),
+            ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay').val()),
+            ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth').val())
+        };
+    }
+
+    function saveholidays(node) {
+        node.holidays = [];
+        const holidaysArr = $('#list').editableList('items');
+        if (holidaysArr) {
+            holidaysArr.each(function (_i) {
+                const rule = this;
+                node.holidays.push(getData(rule));
+            });
+        }
+        console.log(node.holidays);
+    }
+
+    function loadHolidays(node) {
+        if (node.holidays) {
+            node.holidays.forEach(item => {
+                $('#list').editableList('addItem', item);
+            });
+        }
+    }
+
+    RED.nodes.registerType('feiertage', {
         category: 'calendar',
         color: "#339900",
         inputLabels: "manual request",
         outputLabels: "feiertage",
         defaults: {
-            name: {value: "Feiertage", required: true},
-            neujahr: {value: true},
-            neujahrName: {value: "Neujahr", required: true},
-            berchtoldstag: {value: true},
-            berchtoldstagName: {value: "Berchtoldstag", required: true},
-            heiligeDreiKoenige: {value: true},
-            heiligeDreiKoenigeName: {value: "Heilige drei Könige", required: true},
-            weiberfastnacht: {value: true},
-            weiberfastnachtName: {value: "Weiberfastnacht", required: true},
-            valentinstag: {value: true},
-            valentinstagName: {value: "Valentinstag", required: true},
-            rosenmontag: {value: true},
-            rosenmontagName: {value: "Rosenmontag", required: true},
-            fastnachtsdienstag: {value: true},
-            fastnachtsdienstagName: {value: "Fastnachtdienstag", required: true},
-            aschermittwoch: {value: true},
-            aschermittwochName: {value: "Aschermittwoch", required: true},
-            stJosef: {value: true},
-            stJosefName: {value: "St. Josef", required: true},
-            gruendonnerstag: {value: true},
-            gruendonnerstagName: {value: "Gründonnerstag", required: true},
-            karfreitag: {value: true},
-            karfreitagName: {value: "Karfreitag", required: true},
-            easterSunday: {value: true},
-            easterSundayName: {value: "Ostersonntag", required: true},
-            easterMonday: {value: true},
-            easterMondayName: {value: "Ostermontag", required: true},
-            firstMay: {value: true},
-            firstMayName: {value: "1. Mai", required: true},
-            stFlorian: {value: true},
-            stFlorianName: {value: "St. Florian", required: true},
-            christiHimmelfahrt: {value: true},
-            christiHimmelfahrtName: {value: "Christi Himmelfahrt", required: true},
-            pfingstsonntag: {value: true},
-            pfingstsonntagName: {value: "Pfingstsonntag", required: true},
-            pfingstmontag: {value: true},
-            pfingstmontagName: {value: "Pfingstmontag", required: true},
-            fronleichnam: {value: true},
-            fronleichnamName: {value: "Fronleichnam", required: true},
-            bundesfeierCH: {value: true},
-            peterUndPaul: {value: "Peter und Paul", require: true},
-            peterUndPaulName: {value: true},
-            bundesfeierCHName: {value: "Bundesfeiertag", required: true},
-            mariaHimmelfahrt: {value: true},
-            mariaHimmelfahrtName: {value: "Maria Himmelfahrt", required: true},
-            stRupert: {value: true},
-            stRupertName: {value: "St. Rupert", required: true},
-            tagDerDeutschenEinheit: {value: true},
-            tagDerDeutschenEinheitName: {value: "Tag der Deutschen Einheit", required: true},
-            tagDerVolksabstimmung: {value: true},
-            tagDerVolksabstimmungName: {value: "Tag der Volksabstimmung", required: true},
-            nationalfeiertagAT: {value: true},
-            nationalfeiertagATName: {value: "Nationalfeiertag", required: true},
-            halloween: {value: true},
-            halloweenName: {value: "Halloween", required: true},
-            allerheiligen: {value: true},
-            allerheiligenName: {value: "Allerheiligen", required: true},
-            stMartin: {value: true},
-            stMartinName: {value: "St. Martin", required: true},
-            stLeopold: {value: true},
-            stLeopoldName: {value: "St. Leopold", required: true},
-            bussUndBettag: {value: true},
-            bussUndBettagName: {value: "Buß und Bettag", required: true},
-            nikolaus: {value: true},
-            nikolausName: {value: "Nikolaus", required: true},
-            mariaeEmpfaengnis: {value: true},
-            mariaeEmpfaengnisName: {value: "Mariä Empfängnis", required: true},
-            advent1: {value: true},
-            advent1Name: {value: "1. Advent", required: true},
-            advent2: {value: true},
-            advent2Name: {value: "2. Advent", required: true},
-            advent3: {value: true},
-            advent3Name: {value: "3. Advent", required: true},
-            advent4: {value: true},
-            advent4Name: {value: "4. Advent", required: true},
-            heiligabend: {value: true},
-            heiligabendName: {value: "Heiligabend", required: true},
-            weihnachten1: {value: true},
-            weihnachten1Name: {value: "1. Weihnachtsfeiertag", required: true},
-            weihnachten2: {value: true},
-            weihnachten2Name: {value: "2. Weihnachtsfeiertag", required: true},
-            silvester: {value: true},
-            silvesterName: {value: "Silvester", required: true},
-            ownHoliday1: {value: false},
-            ownHoliday1Day: {value: 1},
-            ownHoliday1Month: {value: 1},
-            ownHoliday1Name: {value: "own Date 1"},
-            ownHoliday2: {value: false},
-            ownHoliday2Day: {value: 2},
-            ownHoliday2Month: {value: 2},
-            ownHoliday2Name: {value: "own Date 2"},
-            ownHoliday3: {value: false},
-            ownHoliday3Day: {value: 3},
-            ownHoliday3Month: {value: 3},
-            ownHoliday3Name: {value: "own Date 3"},
-            ownHoliday4: {value: false},
-            ownHoliday4Day: {value: 4},
-            ownHoliday4Month: {value: 4},
-            ownHoliday4Name: {value: "own Date 4"},
-            ownHoliday5: {value: false},
-            ownHoliday5Day: {value: 5},
-            ownHoliday5Month: {value: 5},
-            ownHoliday5Name: {value: "own Date 5"},
-            ownHoliday6: {value: false},
-            ownHoliday6Day: {value: 6},
-            ownHoliday6Month: {value: 6},
-            ownHoliday6Name: {value: "own Date 6"},
-            ownHoliday7: {value: false},
-            ownHoliday7Day: {value: 7},
-            ownHoliday7Month: {value: 7},
-            ownHoliday7Name: {value: "own Date 7"},
-            ownHoliday8: {value: false},
-            ownHoliday8Day: {value: 8},
-            ownHoliday8Month: {value: 8},
-            ownHoliday8Name: {value: "own Date 8"},
-            ownHoliday9: {value: false},
-            ownHoliday9Day: {value: 9},
-            ownHoliday9Month: {value: 9},
-            ownHoliday9Name: {value: "own Date 9"},
-            ownHoliday10: {value: false},
-            ownHoliday10Day: {value: 10},
-            ownHoliday10Month: {value: 10},
-            ownHoliday10Name: {value: "own Date 10"},
-            array: {value: false}
-		},
+            name: { value: "Feiertage", required: true },
+            neujahr: { value: true },
+            neujahrName: { value: "Neujahr", required: true },
+            berchtoldstag: { value: true },
+            berchtoldstagName: { value: "Berchtoldstag", required: true },
+            heiligeDreiKoenige: { value: true },
+            heiligeDreiKoenigeName: { value: "Heilige drei Könige", required: true },
+            weiberfastnacht: { value: true },
+            weiberfastnachtName: { value: "Weiberfastnacht", required: true },
+            valentinstag: { value: true },
+            valentinstagName: { value: "Valentinstag", required: true },
+            rosenmontag: { value: true },
+            rosenmontagName: { value: "Rosenmontag", required: true },
+            fastnachtsdienstag: { value: true },
+            fastnachtsdienstagName: { value: "Fastnachtdienstag", required: true },
+            aschermittwoch: { value: true },
+            aschermittwochName: { value: "Aschermittwoch", required: true },
+            stJosef: { value: true },
+            stJosefName: { value: "St. Josef", required: true },
+            gruendonnerstag: { value: true },
+            gruendonnerstagName: { value: "Gründonnerstag", required: true },
+            karfreitag: { value: true },
+            karfreitagName: { value: "Karfreitag", required: true },
+            easterSunday: { value: true },
+            easterSundayName: { value: "Ostersonntag", required: true },
+            easterMonday: { value: true },
+            easterMondayName: { value: "Ostermontag", required: true },
+            firstMay: { value: true },
+            firstMayName: { value: "1. Mai", required: true },
+            stFlorian: { value: true },
+            stFlorianName: { value: "St. Florian", required: true },
+            christiHimmelfahrt: { value: true },
+            christiHimmelfahrtName: { value: "Christi Himmelfahrt", required: true },
+            pfingstsonntag: { value: true },
+            pfingstsonntagName: { value: "Pfingstsonntag", required: true },
+            pfingstmontag: { value: true },
+            pfingstmontagName: { value: "Pfingstmontag", required: true },
+            fronleichnam: { value: true },
+            fronleichnamName: { value: "Fronleichnam", required: true },
+            bundesfeierCH: { value: true },
+            peterUndPaul: { value: "Peter und Paul", require: true },
+            peterUndPaulName: { value: true },
+            bundesfeierCHName: { value: "Bundesfeiertag", required: true },
+            mariaHimmelfahrt: { value: true },
+            mariaHimmelfahrtName: { value: "Maria Himmelfahrt", required: true },
+            stRupert: { value: true },
+            stRupertName: { value: "St. Rupert", required: true },
+            tagDerDeutschenEinheit: { value: true },
+            tagDerDeutschenEinheitName: { value: "Tag der Deutschen Einheit", required: true },
+            tagDerVolksabstimmung: { value: true },
+            tagDerVolksabstimmungName: { value: "Tag der Volksabstimmung", required: true },
+            nationalfeiertagAT: { value: true },
+            nationalfeiertagATName: { value: "Nationalfeiertag", required: true },
+            halloween: { value: true },
+            halloweenName: { value: "Halloween", required: true },
+            allerheiligen: { value: true },
+            allerheiligenName: { value: "Allerheiligen", required: true },
+            stMartin: { value: true },
+            stMartinName: { value: "St. Martin", required: true },
+            stLeopold: { value: true },
+            stLeopoldName: { value: "St. Leopold", required: true },
+            bussUndBettag: { value: true },
+            bussUndBettagName: { value: "Buß und Bettag", required: true },
+            nikolaus: { value: true },
+            nikolausName: { value: "Nikolaus", required: true },
+            mariaeEmpfaengnis: { value: true },
+            mariaeEmpfaengnisName: { value: "Mariä Empfängnis", required: true },
+            advent1: { value: true },
+            advent1Name: { value: "1. Advent", required: true },
+            advent2: { value: true },
+            advent2Name: { value: "2. Advent", required: true },
+            advent3: { value: true },
+            advent3Name: { value: "3. Advent", required: true },
+            advent4: { value: true },
+            advent4Name: { value: "4. Advent", required: true },
+            heiligabend: { value: true },
+            heiligabendName: { value: "Heiligabend", required: true },
+            weihnachten1: { value: true },
+            weihnachten1Name: { value: "1. Weihnachtsfeiertag", required: true },
+            weihnachten2: { value: true },
+            weihnachten2Name: { value: "2. Weihnachtsfeiertag", required: true },
+            silvester: { value: true },
+            silvesterName: { value: "Silvester", required: true },
+            ownHoliday1: { value: false },
+            ownHoliday1Day: { value: 1 },
+            ownHoliday1Month: { value: 1 },
+            ownHoliday1Name: { value: "own Date 1" },
+            ownHoliday2: { value: false },
+            ownHoliday2Day: { value: 2 },
+            ownHoliday2Month: { value: 2 },
+            ownHoliday2Name: { value: "own Date 2" },
+            ownHoliday3: { value: false },
+            ownHoliday3Day: { value: 3 },
+            ownHoliday3Month: { value: 3 },
+            ownHoliday3Name: { value: "own Date 3" },
+            ownHoliday4: { value: false },
+            ownHoliday4Day: { value: 4 },
+            ownHoliday4Month: { value: 4 },
+            ownHoliday4Name: { value: "own Date 4" },
+            ownHoliday5: { value: false },
+            ownHoliday5Day: { value: 5 },
+            ownHoliday5Month: { value: 5 },
+            ownHoliday5Name: { value: "own Date 5" },
+            ownHoliday6: { value: false },
+            ownHoliday6Day: { value: 6 },
+            ownHoliday6Month: { value: 6 },
+            ownHoliday6Name: { value: "own Date 6" },
+            ownHoliday7: { value: false },
+            ownHoliday7Day: { value: 7 },
+            ownHoliday7Month: { value: 7 },
+            ownHoliday7Name: { value: "own Date 7" },
+            ownHoliday8: { value: false },
+            ownHoliday8Day: { value: 8 },
+            ownHoliday8Month: { value: 8 },
+            ownHoliday8Name: { value: "own Date 8" },
+            ownHoliday9: { value: false },
+            ownHoliday9Day: { value: 9 },
+            ownHoliday9Month: { value: 9 },
+            ownHoliday9Name: { value: "own Date 9" },
+            ownHoliday10: { value: false },
+            ownHoliday10Day: { value: 10 },
+            ownHoliday10Month: { value: 10 },
+            ownHoliday10Name: { value: "own Date 10" },
+            array: { value: false }
+        },
         inputs: 1,
         outputs: 1,
         icon: "icon.svg",
-        label: function() {
-            return this.name||"feiertage";
+        label: function () {
+            return this.name || "feiertage";
+        },
+        oneditprepare: function () {
+            const node = this;
+
+            $('#list').editableList({
+                sortable: true,
+                sort: function (dataA, dataB) {
+                    return dataA.index - dataB.index; 
+                },
+                addButton: true,
+                height: 300,
+                addItem: function(containerRow, index, data) {
+                    containerRow.css({ overflow: 'hidden', whiteSpace: 'nowrap' });
+                    const row = $('<div/>').appendTo(containerRow);
+
+                    const selectDay = $('<select/>', {
+                        class: 'node-input-item-ownHolidayDay',
+                        value: (data.ownHolidayDay || ''),
+                        width: '50px'
+                    });
+                    selectDay.append($('<option></option>').val(1).text('1'));
+                    selectDay.append($('<option></option>').val(2).text('2'));
+                    selectDay.append($('<option></option>').val(3).text('3'));
+                    selectDay.append($('<option></option>').val(4).text('4'));
+                    selectDay.append($('<option></option>').val(5).text('5'));
+                    selectDay.append($('<option></option>').val(6).text('6'));
+                    selectDay.append($('<option></option>').val(7).text('7'));
+                    selectDay.append($('<option></option>').val(8).text('8'));
+                    selectDay.append($('<option></option>').val(9).text('9'));
+                    selectDay.append($('<option></option>').val(10).text('10'));
+                    selectDay.append($('<option></option>').val(11).text('11'));
+                    selectDay.append($('<option></option>').val(12).text('12'));
+                    selectDay.append($('<option></option>').val(13).text('13'));
+                    selectDay.append($('<option></option>').val(14).text('14'));
+                    selectDay.append($('<option></option>').val(15).text('15'));
+                    selectDay.append($('<option></option>').val(16).text('16'));
+                    selectDay.append($('<option></option>').val(17).text('17'));
+                    selectDay.append($('<option></option>').val(18).text('18'));
+                    selectDay.append($('<option></option>').val(19).text('19'));
+                    selectDay.append($('<option></option>').val(20).text('20'));
+                    selectDay.append($('<option></option>').val(21).text('21'));
+                    selectDay.append($('<option></option>').val(22).text('22'));
+                    selectDay.append($('<option></option>').val(23).text('23'));
+                    selectDay.append($('<option></option>').val(24).text('24'));
+                    selectDay.append($('<option></option>').val(25).text('25'));
+                    selectDay.append($('<option></option>').val(26).text('26'));
+                    selectDay.append($('<option></option>').val(27).text('27'));
+                    selectDay.append($('<option></option>').val(28).text('28'));
+                    selectDay.append($('<option></option>').val(29).text('29'));
+                    selectDay.append($('<option></option>').val(30).text('30'));
+                    selectDay.append($('<option></option>').val(31).text('31'));
+                    selectDay.appendTo(row);
+                    const selectMonth = $('<select/>', {
+                        class: 'node-input-item-ownHolidayMonth',
+                        value: (data.ownHolidayMonth || ''),
+                        width: '50px',
+                    });
+                    selectMonth.append($('<option></option>').val(1).text('1'));
+                    selectMonth.append($('<option></option>').val(2).text('2'));
+                    selectMonth.append($('<option></option>').val(3).text('3'));
+                    selectMonth.append($('<option></option>').val(4).text('4'));
+                    selectMonth.append($('<option></option>').val(5).text('5'));
+                    selectMonth.append($('<option></option>').val(6).text('6'));
+                    selectMonth.append($('<option></option>').val(7).text('7'));
+                    selectMonth.append($('<option></option>').val(8).text('8'));
+                    selectMonth.append($('<option></option>').val(9).text('9'));
+                    selectMonth.append($('<option></option>').val(10).text('10'));
+                    selectMonth.append($('<option></option>').val(11).text('11'));
+                    selectMonth.append($('<option></option>').val(12).text('12'));
+                    selectMonth.appendTo(row);
+                    const name = $('<input/>', {
+                        class: 'node-input-item-ownHolidayName',
+                        type: 'text',
+                        value: (data.ownHolidayName || '')
+                    }).appendTo(row);
+                    saveholidays(node);
+                }
+            });
+
+            function getData(rule) {
+                return {
+                    ownHolidayName: rule.find('.node-input-item-ownHolidayName').val(),
+                    ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay').val()),
+                    ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth').val())
+                };
+            }
+
+            function saveholidays(node) {
+                node.holidays = [];
+                const holidaysArr = $('#list').editableList('items');
+                if (holidaysArr) {
+                    holidaysArr.each(function (_i) {
+                        const rule = this;
+                        node.holidays.push(getData(rule));
+                    });
+                }
+                console.log(node.holidays);
+            }
+
+            function loadHolidays(node) {
+                if (node.holidays) {
+                    node.holidays.forEach(item => {
+                        $('#list').editableList('addItem', item);
+                    });
+                }
+            }
+
+            loadHolidays(node);
+        },
+        oneditsave: function () {
+            const node = this;
+
+            function getData(rule) {
+                return {
+                    ownHolidayName: rule.find('.node-input-item-ownHolidayName').val(),
+                    ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay').val()),
+                    ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth').val())
+                };
+            }
+
+            function saveholidays(node) {
+                node.holidays = [];
+                const holidaysArr = $('#list').editableList('items');
+                if (holidaysArr) {
+                    holidaysArr.each(function (_i) {
+                        const rule = this;
+                        node.holidays.push(getData(rule));
+                    });
+                }
+                console.log(node.holidays);
+            }
+
+            function loadHolidays(node) {
+                if (node.holidays) {
+                    node.holidays.forEach(item => {
+                        $('#list').editableList('addItem', item);
+                    });
+                }
+            }
+
+            saveholidays(node);
         }
     });
 

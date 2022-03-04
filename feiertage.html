@@ -724,17 +724,18 @@
     <hr>
 
     <div class="form-row">
-        <span><input style="width: 20px;" type="checkbox" id="node-input-array" placeholder="Array"> <i class="fa fa-tasks"></i> output: Array instead of Object</span>
-    </div>
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-array" placeholder="Array">
+        <i class="fa fa-tasks"></i> output: Array instead of Object</span>
     </div>
 
     <div class="form-row">
-        <span><input style="width: 20px;" type="checkbox" id="node-input-ownholiday" placeholder="Own Holiday"></span>
-        <i class="fa fa-calendar"></i> <input style="width: 200px;" type="text" id="node-input-ownHolidayName"
-            placeholder="Own Holiday">
+        <span><input style="width: 20px;" type="checkbox" id="node-input-dailyOutput" placeholder="Daily Output">
+        <i class="fa fa-tasks"></i> Daily Output at 12am</span>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
@@ -937,7 +938,8 @@
             ownHoliday10Day: { value: 10 },
             ownHoliday10Month: { value: 10 },
             ownHoliday10Name: { value: "own Date 10" },
-            array: { value: false }
+            array: { value: false },
+            dailyOutput: { value: true }
         },
         inputs: 1,
         outputs: 1,
@@ -951,11 +953,11 @@
             $('#list').editableList({
                 sortable: true,
                 sort: function (dataA, dataB) {
-                    return dataA.index - dataB.index; 
+                    return dataA.index - dataB.index;
                 },
                 addButton: true,
                 height: 300,
-                addItem: function(containerRow, index, data) {
+                addItem: function (containerRow, index, data) {
                     containerRow.css({ overflow: 'hidden', whiteSpace: 'nowrap' });
                     const row = $('<div/>').appendTo(containerRow);
 

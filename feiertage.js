@@ -145,6 +145,7 @@ module.exports = function (RED) {
     const nameOwnHoliday10 = config.ownHoliday10Name; // name Own Holiday 10
 
     const checkArray = config.array;
+    const dailyOutput = config.dailyOutput;
 
     let currentYear;
     let currentMonth;
@@ -1413,9 +1414,11 @@ module.exports = function (RED) {
 
     const dailyInterval = setInterval(() => {
       setCurrentDate(); // refresh current date
-      if (currentHour === 0 && currentMinute === 0) {
-        refreshHoliday();
-        isTodayHoliday();
+      if (dailyOutput) {
+        if (currentHour === 0 && currentMinute === 0) {
+          refreshHoliday();
+          isTodayHoliday();
+        }
       }
     }, 60000);
 

@@ -730,7 +730,7 @@
 
     <div class="form-row">
         <span><input style="width: 20px;" type="checkbox" id="node-input-dailyOutput" placeholder="Daily Output">
-        <i class="fa fa-tasks"></i> Daily Output at 12am</span>
+        <i class="fa fa-calendar-check-o"></i> Daily Output at 12 am</span>
     </div>
 
     <div class="form-row">
@@ -774,6 +774,8 @@
         <li><p><b>index 2:</b> date (yyyy-mm-dd)</p></li>
         <li><p><b>index 3:</b> date (dd-mm-yyyy)</p></li>
     </ul>
+
+    <p>Every day at 12 am you will receive a boolean value whether today is a holiday if daily output is enabled.</p>
 
     <h3><span style="color: #339900">own Holidays</span></h3>
     <p>You can chose up to 10 own dates. Select the day in the first dropdown menu and the month in the second. Chose a name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday. Pay attention: The node does NOT validate your own dates. So if you set the 30 febrary or the 31 april as date you wont't get an error message.</p>
@@ -947,147 +949,6 @@
         label: function () {
             return this.name || "feiertage";
         },
-        oneditprepare: function () {
-            const node = this;
-
-            $('#list').editableList({
-                sortable: true,
-                sort: function (dataA, dataB) {
-                    return dataA.index - dataB.index;
-                },
-                addButton: true,
-                height: 300,
-                addItem: function (containerRow, index, data) {
-                    containerRow.css({ overflow: 'hidden', whiteSpace: 'nowrap' });
-                    const row = $('<div/>').appendTo(containerRow);
-
-                    const selectDay = $('<select/>', {
-                        class: 'node-input-item-ownHolidayDay',
-                        value: (data.ownHolidayDay || ''),
-                        width: '50px'
-                    });
-                    selectDay.append($('<option></option>').val(1).text('1'));
-                    selectDay.append($('<option></option>').val(2).text('2'));
-                    selectDay.append($('<option></option>').val(3).text('3'));
-                    selectDay.append($('<option></option>').val(4).text('4'));
-                    selectDay.append($('<option></option>').val(5).text('5'));
-                    selectDay.append($('<option></option>').val(6).text('6'));
-                    selectDay.append($('<option></option>').val(7).text('7'));
-                    selectDay.append($('<option></option>').val(8).text('8'));
-                    selectDay.append($('<option></option>').val(9).text('9'));
-                    selectDay.append($('<option></option>').val(10).text('10'));
-                    selectDay.append($('<option></option>').val(11).text('11'));
-                    selectDay.append($('<option></option>').val(12).text('12'));
-                    selectDay.append($('<option></option>').val(13).text('13'));
-                    selectDay.append($('<option></option>').val(14).text('14'));
-                    selectDay.append($('<option></option>').val(15).text('15'));
-                    selectDay.append($('<option></option>').val(16).text('16'));
-                    selectDay.append($('<option></option>').val(17).text('17'));
-                    selectDay.append($('<option></option>').val(18).text('18'));
-                    selectDay.append($('<option></option>').val(19).text('19'));
-                    selectDay.append($('<option></option>').val(20).text('20'));
-                    selectDay.append($('<option></option>').val(21).text('21'));
-                    selectDay.append($('<option></option>').val(22).text('22'));
-                    selectDay.append($('<option></option>').val(23).text('23'));
-                    selectDay.append($('<option></option>').val(24).text('24'));
-                    selectDay.append($('<option></option>').val(25).text('25'));
-                    selectDay.append($('<option></option>').val(26).text('26'));
-                    selectDay.append($('<option></option>').val(27).text('27'));
-                    selectDay.append($('<option></option>').val(28).text('28'));
-                    selectDay.append($('<option></option>').val(29).text('29'));
-                    selectDay.append($('<option></option>').val(30).text('30'));
-                    selectDay.append($('<option></option>').val(31).text('31'));
-                    selectDay.appendTo(row);
-                    const selectMonth = $('<select/>', {
-                        class: 'node-input-item-ownHolidayMonth',
-                        value: (data.ownHolidayMonth || ''),
-                        width: '50px',
-                    });
-                    selectMonth.append($('<option></option>').val(1).text('1'));
-                    selectMonth.append($('<option></option>').val(2).text('2'));
-                    selectMonth.append($('<option></option>').val(3).text('3'));
-                    selectMonth.append($('<option></option>').val(4).text('4'));
-                    selectMonth.append($('<option></option>').val(5).text('5'));
-                    selectMonth.append($('<option></option>').val(6).text('6'));
-                    selectMonth.append($('<option></option>').val(7).text('7'));
-                    selectMonth.append($('<option></option>').val(8).text('8'));
-                    selectMonth.append($('<option></option>').val(9).text('9'));
-                    selectMonth.append($('<option></option>').val(10).text('10'));
-                    selectMonth.append($('<option></option>').val(11).text('11'));
-                    selectMonth.append($('<option></option>').val(12).text('12'));
-                    selectMonth.appendTo(row);
-                    const name = $('<input/>', {
-                        class: 'node-input-item-ownHolidayName',
-                        type: 'text',
-                        value: (data.ownHolidayName || '')
-                    }).appendTo(row);
-                    saveholidays(node);
-                }
-            });
-
-            function getData(rule) {
-                return {
-                    ownHolidayName: rule.find('.node-input-item-ownHolidayName').val(),
-                    ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay').val()),
-                    ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth').val())
-                };
-            }
-
-            function saveholidays(node) {
-                node.holidays = [];
-                const holidaysArr = $('#list').editableList('items');
-                if (holidaysArr) {
-                    holidaysArr.each(function (_i) {
-                        const rule = this;
-                        node.holidays.push(getData(rule));
-                    });
-                }
-                console.log(node.holidays);
-            }
-
-            function loadHolidays(node) {
-                if (node.holidays) {
-                    node.holidays.forEach(item => {
-                        $('#list').editableList('addItem', item);
-                    });
-                }
-            }
-
-            loadHolidays(node);
-        },
-        oneditsave: function () {
-            const node = this;
-
-            function getData(rule) {
-                return {
-                    ownHolidayName: rule.find('.node-input-item-ownHolidayName').val(),
-                    ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay').val()),
-                    ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth').val())
-                };
-            }
-
-            function saveholidays(node) {
-                node.holidays = [];
-                const holidaysArr = $('#list').editableList('items');
-                if (holidaysArr) {
-                    holidaysArr.each(function (_i) {
-                        const rule = this;
-                        node.holidays.push(getData(rule));
-                    });
-                }
-                console.log(node.holidays);
-            }
-
-            function loadHolidays(node) {
-                if (node.holidays) {
-                    node.holidays.forEach(item => {
-                        $('#list').editableList('addItem', item);
-                    });
-                }
-            }
-
-            saveholidays(node);
-        }
     });
 
     function resetName() {

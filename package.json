@@ -1,7 +1,7 @@
 {
   "author": "Marius Lang <lang.marius@t-online.de>",
   "dependencies": {
-    "getfeiertage.js": "^2.1.0"
+    "getfeiertage.js": "^2.1.1"
   },
   "deprecated": false,
   "description": "NodeRED node to get german, austrian, swiss holidays and own special dates",
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "git+https://github.com/MariusLang/node-red-contrib-feiertage.git"
   },
-  "version": "1.4.0",
+  "version": "1.4.2",
   "bugs": {
     "url": "https://github.com/MariusLang/node-red-contrib-feiertage/issues"
   },

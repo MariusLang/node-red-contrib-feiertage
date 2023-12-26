@@ -552,7 +552,6 @@ module.exports = function (RED) {
     };
 
     const holiday = [];
-    let wasYesterdayHolidayIndicator = false;
 
     function checkbox() {
       // check New Year is activated
@@ -1073,21 +1072,6 @@ module.exports = function (RED) {
     }
 
     function refreshHoliday() {
-      // save status whether yesterday was holiday
-      const currentDate = new Date(`${currentYear}-${currentMonth}-${currentDay}`);
-      const yesterday = new Date(currentDate);
-      yesterday.setDate(currentDate.getDate() - 1);
-
-      for (let i = 0; i < holiday.length; i += 1) {
-        const element = holiday[i];
-        if (yesterday.toDateString() === new Date(element.dateObj).toDateString()) {
-          wasYesterdayHolidayIndicator = true;
-          break;
-        } else {
-          wasYesterdayHolidayIndicator = false;
-        }
-      }
-
       // if holiday is already over create new date (next year)
       if ((new Date(newYear.dateObj) - new Date(`${currentYear}-${currentMonth}-${currentDay}`)) < 0) {
         newYear.dateObj = Feiertage.getNeujahr(Feiertage.formatDateObj, currentYear + 1);
@@ -1335,8 +1319,10 @@ module.exports = function (RED) {
     function isTodayHoliday() {
       // outputs boolean whether today is holiday
       refreshHoliday(); // refresh holiday array
-      let todayHoliday = false;
-      if (holiday.length !== 0) {
+      let todayHoliday;
+      if (holiday.length === 0) {
+        todayHoliday = false; // if there aren't items in holiday array --> today cant' be holiday
+      } else {
         for (let i = 0; i < holiday.length; i += 1) {
           const element = holiday[i];
           if (new Date(element.dateObj).valueOf() - new Date(`${currentYear}-${currentMonth}-${currentDay}T00:00:00.000Z`).valueOf() === 0) {
@@ -1360,7 +1346,8 @@ module.exports = function (RED) {
         for (let i = 0; i < holiday.length; i += 1) {
           const element = holiday[i];
           const holidayDate = new Date(element.dateObj);
-          if (holidayDate.getFullYear() === tomorrowDate.getFullYear()
+          if (
+            holidayDate.getFullYear() === tomorrowDate.getFullYear()
             && holidayDate.getMonth() === tomorrowDate.getMonth()
             && holidayDate.getDate() === tomorrowDate.getDate()
           ) {
@@ -1370,12 +1357,6 @@ module.exports = function (RED) {
         }
       }
       node.send({ payload: tomorrowHoliday });
-    }
-
-    function wasYesterdayHoliday() {
-      // outputs boolean whether yesterday was holiday
-      refreshHoliday(); // refresh holiday array
-      node.send({ payload: wasYesterdayHolidayIndicator });
     }
 
     function sendNextHoliday() {
@@ -1448,9 +1429,6 @@ module.exports = function (RED) {
           break;
         case 'isTomorrowHoliday':
           isTomorrowHoliday();
-          break;
-        case 'wasYesterdayHoliday':
-          wasYesterdayHoliday();
           break;
         case 'nextHoliday':
           sendNextHoliday();

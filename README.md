@@ -8,7 +8,7 @@
 
 [![NPM](https://nodei.co/npm/node-red-contrib-feiertage.png?compact=true)](https://nodei.co/npm/node-red-contrib-feiertage/)
 
-The Node Red **Feiertage** node is the ultimative node to get informations about german, austrian and swiss holidays.
+The Node Red **Feiertage** node is the ultimate node to get information about german, austrian and swiss holidays.
 
 Are there any holidays missing? Write an issue! I'm going to add these holidays for you.
 
@@ -32,7 +32,7 @@ npm install node-red-contrib-feiertage
 
 ## Getting Started
 
-At first, it's important to check that you have picked the rigth localisation and timezone on your device. Below you can
+At first, it's important to check that you have picked the right localisation and timezone on your device. Below you can
 find a manual how to change those settings on to a RaspberryPi.
 
 Login into your Pi. Then open the settings with this command.
@@ -65,18 +65,18 @@ The input can be used to trigger special outputs. The keywords are listed below.
 
  msg.payload          | output                                                                   
 ----------------------|--------------------------------------------------------------------------
- isTodayHoliday       | boolean wether today is holiday                                          
- isTomorrowHoliday    | boolean wether tomorrow is holiday                                       
- isChristmasTime      | boolean wether today is Christmas time (1. Advent - Heilige drei Könige) 
+ isTodayHoliday       | boolean whether today is holiday                                          
+ isTomorrowHoliday    | boolean whether tomorrow is holiday                                       
+ isChristmasTime      | boolean whether today is Christmas time (1. Advent - Heilige drei Könige) 
  nextHoliday          | information about next holiday                                           
- nextThreeHolidays    | informations about next 3 holidays                                       
- all                  | informations about all holidays                                          
+ nextThreeHolidays    | information about next 3 holidays                                       
+ all                  | information about all holidays                                          
  daysUntilNextHoliday | number of days until next holidays                                       
 
 ### Output
 
-The output can be used to listen to automatic and user triggered events. Every day at 00:01 o'clock the node automaticly
-outputs a boolean value wether today is a holiday.
+The output can be used to listen to automatic and user triggered events. Every day at 00:01 o'clock the node automatically
+outputs a boolean value whether today is a holiday.
 
 You decide what you want to receive: Object or Array!
 To enable output as array open the node settings and hit the checkbox **output: Array instead of Object** at the bottom.
@@ -103,9 +103,9 @@ Every day at 12 am you will receive a boolean value whether today is a holiday i
 
 ### Own Holidays
 
-You can chose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a
+You can choose up to 10 own dates. Select the **day** in the first dropdown-menu and the **month** in the second. Chose a
 name for your holiday and type it into the input field. Don't forget to hit the checkbox to enable your own holiday. Pay
-attention: The node does NOT validate your own dates. So if you set the 30 febrary or the 31 april as date you wont't
+attention: The node does NOT validate your own dates. So if you set the 30 february or the 31 april as date you won't
 get an error message.
 
 ![own_holiday_example](img/own_holiday_example.PNG)

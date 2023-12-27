@@ -17,12 +17,12 @@ below.
 
 ## You're living in Germany, Austria or Switzerland?
 
- country                                                     | Node Red node                                                                                                  
--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------
- Germany                                                     | [node-red-contrib-feiertage-germany](https://github.com/MariusLang/node-red-contrib-feiertage-germany)         
- Austria                                                     | [node-red-contrib-feiertage-austria](https://github.com/MariusLang/node-red-contrib-feiertage-austria)         
- Switzerland                                                 | [node-red-contrib-feiertage-switzerland](https://github.com/MariusLang/node-red-contrib-feiertage-switzerland) 
- Or you want all in one node (Germany, Austria, Switzerland) | [node-red-contrib-feiertage](https://github.com/MariusLang/node-red-contrib-feiertage)                         
+| country                                                     | Node Red node                                                                                                  |
+|-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| Germany                                                     | [node-red-contrib-feiertage-germany](https://github.com/MariusLang/node-red-contrib-feiertage-germany)         |
+| Austria                                                     | [node-red-contrib-feiertage-austria](https://github.com/MariusLang/node-red-contrib-feiertage-austria)         |
+| Switzerland                                                 | [node-red-contrib-feiertage-switzerland](https://github.com/MariusLang/node-red-contrib-feiertage-switzerland) |
+| Or you want all in one node (Germany, Austria, Switzerland) | [node-red-contrib-feiertage](https://github.com/MariusLang/node-red-contrib-feiertage)                         |
 
 ## Installation
 
@@ -63,15 +63,15 @@ sudo reboot
 
 The input can be used to trigger special outputs. The keywords are listed below.
 
- msg.payload          | output                                                                   
-----------------------|--------------------------------------------------------------------------
- isTodayHoliday       | boolean whether today is holiday                                          
- isTomorrowHoliday    | boolean whether tomorrow is holiday                                       
- isChristmasTime      | boolean whether today is Christmas time (1. Advent - Heilige drei Könige) 
- nextHoliday          | information about next holiday                                           
- nextThreeHolidays    | information about next 3 holidays                                       
- all                  | information about all holidays                                          
- daysUntilNextHoliday | number of days until next holidays                                       
+| msg.payload          | output                                                                    |
+|----------------------|---------------------------------------------------------------------------|
+| isTodayHoliday       | boolean whether today is holiday                                          |
+| isTomorrowHoliday    | boolean whether tomorrow is holiday                                       |
+| isChristmasTime      | boolean whether today is Christmas time (1. Advent - Heilige drei Könige) |
+| nextHoliday          | information about next holiday                                            |
+| nextThreeHolidays    | information about next 3 holidays                                         |
+| all                  | information about all holidays                                            |
+| daysUntilNextHoliday | number of days until next holidays                                        |
 
 ### Output
 
@@ -83,21 +83,21 @@ To enable output as array open the node settings and hit the checkbox **output: 
 
 holiday object output:
 
- key     | output                   
----------|--------------------------
- id      | id                       
- name    | name                     
- dateObj | date (yyyy-mm-dd)        
- dateDE  | german date (dd.mm.yyyy) 
+| key     | output                   |
+|---------|--------------------------|
+| id      | id                       |
+| name    | name                     |
+| dateObj | date (yyyy-mm-dd)        |
+| dateDE  | german date (dd.mm.yyyy) |
 
 holiday array[3] output:
 
- index | output                   
--------|--------------------------
- 0     | id                       
- 1     | name                     
- 2     | date (yyyy-mm-dd)        
- 3     | german date (dd.mm.yyyy) 
+| index | output                   |
+|-------|--------------------------|
+| 0     | id                       |
+| 1     | name                     |
+| 2     | date (yyyy-mm-dd)        |
+| 3     | german date (dd.mm.yyyy) |
 
 Every day at 12 am you will receive a boolean value whether today is a holiday if daily output is enabled.
 

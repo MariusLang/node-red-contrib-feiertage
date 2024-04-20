@@ -854,41 +854,6 @@
 </script>
 
 <script type="text/javascript">
-  function getData(rule) {
-    return {
-      ownHolidayCheckbox: rule.find('.node-input-item-checkbox')
-        .val(),
-      ownHolidayName: rule.find('.node-input-item-ownHolidayName')
-        .val(),
-      ownHolidayDay: parseInt(rule.find('.node-input-item-ownHolidayDay')
-        .val()),
-      ownHolidayMonth: parseInt(rule.find('.node-input-item-ownHolidayMonth')
-        .val())
-    };
-  }
-
-  function saveholidays(node) {
-    node.holidays = [];
-    const holidaysArr = $('#list')
-      .editableList('items');
-    if (holidaysArr) {
-      holidaysArr.each(function (_i) {
-        const rule = this;
-        node.holidays.push(getData(rule));
-      });
-    }
-    console.log(node.holidays);
-  }
-
-  function loadHolidays(node) {
-    if (node.holidays) {
-      node.holidays.forEach(item => {
-        $('#list')
-          .editableList('addItem', item);
-      });
-    }
-  }
-
   RED.nodes.registerType('feiertage', {
     category: 'calendar',
     color: '#339900',
@@ -1145,7 +1110,11 @@
       ownHoliday10Month: { value: 10 },
       ownHoliday10Name: { value: 'own Date 10' },
       array: { value: false },
-      dailyOutput: { value: true }
+      dailyOutput: { value: true },
+      holidays: {
+        value: [],
+        required: false
+      },
     },
     inputs: 1,
     outputs: 1,
@@ -1153,7 +1122,324 @@
     label: function () {
       return this.name || 'feiertage';
     },
+    oneditprepare: function () {
+      const node = this;
+
+      $('#list')
+        .editableList({
+          sortable: true,
+          sort: function (dataA, dataB) {
+            return dataA.index - dataB.index;
+          },
+          addButton: true,
+          height: 500,
+          addItem: function (containerRow, index, data) {
+            containerRow.css({
+              overflow: 'hidden',
+              whiteSpace: 'nowrap'
+            });
+            const row = $('<div/>')
+              .appendTo(containerRow);
+
+            const day = $('<select/>', {
+              class: 'node-input-item-day',
+              width: '50px'
+            });
+            day.append($('<option></option>')
+              .val(1)
+              .text('01'));
+            day.append($('<option></option>')
+              .val(2)
+              .text('02'));
+            day.append($('<option></option>')
+              .val(3)
+              .text('03'));
+            day.append($('<option></option>')
+              .val(4)
+              .text('04'));
+            day.append($('<option></option>')
+              .val(5)
+              .text('05'));
+            day.append($('<option></option>')
+              .val(6)
+              .text('06'));
+            day.append($('<option></option>')
+              .val(7)
+              .text('07'));
+            day.append($('<option></option>')
+              .val(8)
+              .text('08'));
+            day.append($('<option></option>')
+              .val(9)
+              .text('09'));
+            day.append($('<option></option>')
+              .val(10)
+              .text('10'));
+            day.append($('<option></option>')
+              .val(11)
+              .text('11'));
+            day.append($('<option></option>')
+              .val(12)
+              .text('12'));
+            day.append($('<option></option>')
+              .val(13)
+              .text('13'));
+            day.append($('<option></option>')
+              .val(14)
+              .text('14'));
+            day.append($('<option></option>')
+              .val(15)
+              .text('15'));
+            day.append($('<option></option>')
+              .val(16)
+              .text('16'));
+            day.append($('<option></option>')
+              .val(17)
+              .text('17'));
+            day.append($('<option></option>')
+              .val(18)
+              .text('18'));
+            day.append($('<option></option>')
+              .val(19)
+              .text('19'));
+            day.append($('<option></option>')
+              .val(20)
+              .text('20'));
+            day.append($('<option></option>')
+              .val(21)
+              .text('21'));
+            day.append($('<option></option>')
+              .val(22)
+              .text('22'));
+            day.append($('<option></option>')
+              .val(23)
+              .text('23'));
+            day.append($('<option></option>')
+              .val(24)
+              .text('24'));
+            day.append($('<option></option>')
+              .val(25)
+              .text('25'));
+            day.append($('<option></option>')
+              .val(26)
+              .text('26'));
+            day.append($('<option></option>')
+              .val(27)
+              .text('27'));
+            day.append($('<option></option>')
+              .val(28)
+              .text('28'));
+            day.append($('<option></option>')
+              .val(29)
+              .text('29'));
+            day.append($('<option></option>')
+              .val(30)
+              .text('30'));
+            day.append($('<option></option>')
+              .val(31)
+              .text('31'));
+            day.appendTo(row);
+
+            const month = $('<select/>', {
+              class: 'node-input-item-month',
+              width: '130px'
+            });
+
+            month.append($('<option></option>')
+              .val(1)
+              .text('January'));
+            month.append($('<option></option>')
+              .val(2)
+              .text('February'));
+            month.append($('<option></option>')
+              .val(3)
+              .text('March'));
+            month.append($('<option></option>')
+              .val(4)
+              .text('April'));
+            month.append($('<option></option>')
+              .val(5)
+              .text('May'));
+            month.append($('<option></option>')
+              .val(6)
+              .text('June'));
+            month.append($('<option></option>')
+              .val(7)
+              .text('July'));
+            month.append($('<option></option>')
+              .val(8)
+              .text('August'));
+            month.append($('<option></option>')
+              .val(9)
+              .text('September'));
+            month.append($('<option></option>')
+              .val(10)
+              .text('October'));
+            month.append($('<option></option>')
+              .val(11)
+              .text('November'));
+            month.append($('<option></option>')
+              .val(12)
+              .text('December'));
+            month.appendTo(row);
+
+            const year = $('<select/>', {
+              class: 'node-input-item-year',
+              width: '80px'
+            });
+
+            year.append($('<option></option>')
+              .val(2021)
+              .text('2021'));
+            year.append($('<option></option>')
+              .val(2022)
+              .text('2022'));
+            year.append($('<option></option>')
+              .val(2023)
+              .text('2023'));
+            year.append($('<option></option>')
+              .val(2024)
+              .text('2024'));
+            year.append($('<option></option>')
+              .val(2025)
+              .text('2025'));
+            year.append($('<option></option>')
+              .val(2026)
+              .text('2026'));
+            year.append($('<option></option>')
+              .val(2027)
+              .text('2027'));
+            year.append($('<option></option>')
+              .val(2028)
+              .text('2028'));
+            year.append($('<option></option>')
+              .val(2029)
+              .text('2029'));
+            year.append($('<option></option>')
+              .val(2030)
+              .text('2030'));
+            year.append($('<option></option>')
+              .val(2031)
+              .text('2031'));
+            year.append($('<option></option>')
+              .val(2032)
+              .text('2032'));
+            year.append($('<option></option>')
+              .val(2033)
+              .text('2033'));
+            year.append($('<option></option>')
+              .val(2034)
+              .text('2034'));
+            year.append($('<option></option>')
+              .val(2035)
+              .text('2035'));
+            year.append($('<option></option>')
+              .val(2036)
+              .text('2036'));
+            year.append($('<option></option>')
+              .val(2037)
+              .text('2037'));
+            year.append($('<option></option>')
+              .val(2038)
+              .text('2038'));
+            year.append($('<option></option>')
+              .val(2039)
+              .text('2039'));
+            year.append($('<option></option>')
+              .val(2040)
+              .text('2040'));
+            year.append($('<option></option>')
+              .val(2041)
+              .text('2041'));
+            year.append($('<option></option>')
+              .val(2042)
+              .text('2042'));
+            year.append($('<option></option>')
+              .val(2043)
+              .text('2043'));
+            year.append($('<option></option>')
+              .val(2044)
+              .text('2044'));
+            year.append($('<option></option>')
+              .val(2045)
+              .text('2045'));
+            year.append($('<option></option>')
+              .val(2046)
+              .text('2046'));
+            year.append($('<option></option>')
+              .val(2047)
+              .text('2047'));
+            year.append($('<option></option>')
+              .val(2048)
+              .text('2048'));
+            year.append($('<option></option>')
+              .val(2049)
+              .text('2049'));
+            year.append($('<option></option>')
+              .val(2050)
+              .text('2050'));
+            year.appendTo(row);
+
+            const name = $('<input/>', {
+              class: 'node-input-item-name',
+              type: 'text',
+              value: (data.name || ''),
+              required: true,
+            })
+              .appendTo(row);
+
+            day.val(data.day);
+            month.val(data.month);
+            year.val(data.year);
+
+            saveHolidays(node);
+          },
+          removable: true,
+        });
+
+      loadHolidays(node);
+    },
+    oneditsave: function () {
+      const node = this;
+
+      saveHolidays(node);
+    },
   });
+
+  function getData(rule) {
+    return {
+      name: rule.find('.node-input-item-name')
+        .val(),
+      day: rule.find('.node-input-item-day')
+        .val(),
+      month: rule.find('.node-input-item-month')
+        .val(),
+      year: rule.find('.node-input-item-year')
+        .val(),
+    };
+  }
+
+  function saveHolidays(node) {
+    node.holidays = [];
+    const holidaysArr = $('#list')
+      .editableList('items');
+    if (holidaysArr) {
+      holidaysArr.each(function (_i) {
+        const rule = this;
+        node.holidays.push(getData(rule));
+      });
+    }
+    console.log(node.holidays);
+  }
+
+  function loadHolidays(node) {
+    if (node.holidays) {
+      node.holidays.forEach(item => {
+        $('#list')
+          .editableList('addItem', item);
+      });
+    }
+  }
 
   function resetName() {
     document.getElementById('node-input-neujahrName').value = 'Neujahr';

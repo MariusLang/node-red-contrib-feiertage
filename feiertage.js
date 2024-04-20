@@ -9,6 +9,8 @@ module.exports = function (RED) {
 
     const Feiertage = require('getfeiertage.js').Feiertage;
 
+    const holidays = config.holidays;
+
     const checkNewYear = config.neujahr; // checkbox New Year
     const newYearName = config.neujahrName; // New Year Name
     const checkBerchtoldstag = config.berchtoldstag; // checkbox Berchtoldstag
